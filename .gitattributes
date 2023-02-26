@@ -1,0 +1,29 @@
+* -text
+
+#
+# The above will handle all files NOT found below
+#
+*.css           text
+*.html          text
+*.java          text
+*.js            text
+*.json          text
+*.properties    text
+*.txt           text
+*.xml           text
+*.cmd           text
+*.py            text
+*.yaml          text
+*.yml           text
+*.csv           text
+.gitignore      text
+.gitattributes  text
+.gitkeep        text
+Procfile        text
+
+# These files are binary and should be left untouched
+*.class         binary
+*.jar           binary
+*.gif           binary
+*.jpg           binary
+*.png           binary

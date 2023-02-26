@@ -1,0 +1,32 @@
+<app-ct-section>
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-heading>Add New Source Code</app-ct-heading>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <form [formGroup]="form" novalidate="novalidate">
+            <app-ct-section-body-row>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Parameters of source code</mat-label>
+                    <textarea formControlName="source" matInput="matInput" cdkTextareaAutosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="10" value="" autocomplete="off"></textarea>
+                    <mat-hint>This is a required field.</mat-hint>
+                </mat-form-field>
+            </app-ct-section-body-row>
+        </form>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <app-ct-flex justify-content="flex-end" gap="8px">
+                <app-ct-flex-item>
+                    <button mat-stroked-button (click)="cancel()">Cancel</button>
+                </app-ct-flex-item>
+                <app-ct-flex-item>
+                    <button #button mat-flat-button="mat-flat-button" (click)="create()" color="primary"
+                        [disabled]="!form.valid">Add</button>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>

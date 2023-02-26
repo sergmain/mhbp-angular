@@ -1,0 +1,12 @@
+@import "../batch.scss";
+
+
+.selected-color {
+    background: $color-table-row-selected;
+}
+
+.selected-count {
+    background: $color-table-row-selected;
+    border-radius: 4px;
+    padding: 10px 20px 8px;
+}

@@ -1,0 +1,47 @@
+<app-ct-cols *ngIf="response">
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>
+                        Account Role id {{response.account?.id }}, login {{response.account?.username}}
+                    </app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body>
+                <app-ct-section-body-row *ngIf="response" style="font-size:125%;">
+                    <app-ct-section-content>
+                        <mat-checkbox [(ngModel)]="isManager">Manager</mat-checkbox>
+                    </app-ct-section-content>
+                    <app-ct-section-content>
+                        <mat-checkbox [(ngModel)]="isOperator">Operator</mat-checkbox>
+                    </app-ct-section-content>
+                    <app-ct-section-content>
+                        <mat-checkbox [(ngModel)]="isBilling">Billing</mat-checkbox>
+                    </app-ct-section-content>
+                    <app-ct-section-content>
+                        <mat-checkbox [(ngModel)]="isData">Data</mat-checkbox>
+                    </app-ct-section-content>
+                    <app-ct-section-content>
+                        <mat-checkbox [(ngModel)]="isServerRestAccess">Server Rest Access</mat-checkbox>
+                    </app-ct-section-content>
+                    <app-ct-section-content>
+                        <mat-checkbox [(ngModel)]="isAdmin">Admin</mat-checkbox>
+                    </app-ct-section-content>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+            <app-ct-section-footer>
+                <app-ct-section-footer-row>
+                    <app-ct-flex justify-content="flex-end" gap="8px">
+                        <app-ct-flex-item>
+                            <button mat-stroked-button (click)="back()">Cancel</button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button color="primary" (click)="save()">Save</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-footer-row>
+            </app-ct-section-footer>
+        </app-ct-section>
+    </app-ct-col>
+</app-ct-cols>

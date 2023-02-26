@@ -1,0 +1,11 @@
+@function unit($a) {
+    @return $a * 9px
+}
+
+
+$font-family-monospace: 'Roboto Mono', 'Courier New', Courier, monospace;
+
+$color-table-row-selected: rgba(255, 193, 7, 0.18);
+
+$color-link: #42a8ff;
+$color-link-hover: orange;

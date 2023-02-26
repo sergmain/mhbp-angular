@@ -1,0 +1,57 @@
+<app-ct-cols *ngIf="experimentsEditResult">
+    <app-ct-col size="6">
+        <app-ct-section>
+
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>Experiment #{{simpleExperiment.id}}</app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+
+            <app-ct-section-body>
+                <app-ct-section-body-row>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput="matInput" autocomplete="off" [(ngModel)]="simpleExperiment.name" />
+                        <mat-hint>This is a required field. </mat-hint>
+                    </mat-form-field>
+                </app-ct-section-body-row>
+                <app-ct-section-body-row>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput="matInput" cdkTextareaAutosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+                            [(ngModel)]="simpleExperiment.description"></textarea>
+                        <mat-hint>This is a required field. </mat-hint>
+                    </mat-form-field>
+                </app-ct-section-body-row>
+                <app-ct-section-body-row>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Experiment code</mat-label>
+                        <textarea matInput="matInput" cdkTextareaAutosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+                            [(ngModel)]="simpleExperiment.code"></textarea>
+                        <mat-hint>This is a required field. </mat-hint>
+                    </mat-form-field>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+
+            <app-ct-section-footer>
+                <app-ct-section-footer-row>
+                    <app-ct-flex justify-content="flex-end" gap="8px">
+                        <app-ct-flex-item>
+                            <button mat-stroked-button="mat-stroked-button" (click)="back()" title="Cancel">
+                                Cancel</button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button="mat-flat-button" (click)="save()" color="primary"
+                                [disabled]="isLoading" title="Save">Save</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-footer-row>
+            </app-ct-section-footer>
+
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="operationStatusRest"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

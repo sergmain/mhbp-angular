@@ -1,0 +1,34 @@
+<app-ct-cols>
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>New Company</app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body [formGroup]="form">
+                <app-ct-section-body-row>
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Name of company</mat-label>
+                        <input matInput="matInput" formControlName="name" />
+                        <mat-hint>This is a required field.</mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <app-ct-flex justify-content="flex-end" gap="unit(1)">
+                        <app-ct-flex-item>
+                            <a mat-stroked-button [routerLink]="['../companies']">Cancel</a>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button color="primary" (click)="createCompany()"
+                                [disabled]="form.invalid">Create
+                                Company</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="operationStatusRest"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

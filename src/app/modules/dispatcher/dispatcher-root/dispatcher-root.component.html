@@ -1,0 +1,77 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sidenavOpened">
+        <div class="navigation">
+
+            <button *ngIf="
+                    isRole.MasterAssetManager ||
+                    isRole.Admin ||
+                    isRole.Data ||
+                    isRole.Manager
+                " 
+                mat-button  
+                routerLinkActive="active" 
+                routerLink="/dispatcher/source-codes">
+                    {{ 'dispatcher.SourceCodes' | translate }}
+            </button>
+
+            <button *ngIf="
+                    isRole.Admin || 
+                    isRole.Data
+                " 
+                mat-button 
+                routerLinkActive="active"
+                routerLink="/dispatcher/global-variables">
+                    {{ 'dispatcher.Variables' | translate }}
+            </button>
+
+            <button *ngIf="
+                    isRole.MasterAssetManager ||
+                    isRole.Admin ||
+                    isRole.Data
+                " 
+                mat-button 
+                routerLinkActive="active"
+                routerLink="/dispatcher/functions">
+                    {{ 'dispatcher.Functions' | translate }}
+            </button>
+
+            <button *ngIf="
+                    isRole.Admin ||
+                    isRole.Data
+                " 
+                mat-button 
+                routerLinkActive="active"
+                routerLink="/dispatcher/processors">
+                    {{ 'dispatcher.Processors' | translate }}
+            </button>
+
+            <button *ngIf="
+                    isRole.Admin
+                " 
+                mat-button 
+                routerLinkActive="active"
+                routerLink="/dispatcher/accounts">
+                    {{ 'dispatcher.Accounts' | translate }}
+            </button>
+
+            <button *ngIf="
+                    isRole.MasterAdmin ||
+                    isRole.MasterOperator ||
+                    isRole.MasterSupport
+                " 
+                mat-button 
+                routerLinkActive="active"
+                routerLink="/dispatcher/company/companies">
+                    {{ 'dispatcher.Company' | translate }}
+            </button>
+
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-ct-content>
+            <router-outlet></router-outlet>
+            <app-ct-back-button></app-ct-back-button>
+            <app-copy-right></app-copy-right>
+        </app-ct-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

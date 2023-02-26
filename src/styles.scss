@@ -1,0 +1,77 @@
+@import "../node_modules/normalize.css/normalize.css";
+@import "./fonts/roboto/roboto.css";
+@import "./fonts/robotocondensed/robotocondensed.css";
+@import "./fonts/robotomono/robotomono.css";
+@import "./fonts/material-design-icons/material-icons.css";
+@import "./variables.scss";
+* {
+    box-sizing: border-box;
+    // background-color: rgba(black, 0.1);
+}
+
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    min-height: 100%;
+    font-size: unit(2);
+    line-height: unit(3);
+}
+
+h1 {
+    line-height: unit(5);
+    font-size: unit(4);
+    font-weight: normal;
+    margin: unit(3) 0;
+    font-weight: bold;
+}
+
+p {
+    margin: unit(2) 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: none;
+    margin: unit(4) 0;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+code,
+pre {
+    font-family: 'Roboto Mono', 'Courier New', Courier, monospace
+}
+
+button * {
+    pointer-events: none;
+}
+
+.deleted-table-row {
+    opacity: 0.5;
+    filter: grayscale(1);
+    pointer-events: none;
+    user-select: none;
+}
+
+.link {
+    color: $color-link;
+    cursor: pointer;
+}
+.link:hover {
+    color: $color-link-hover;
+}
+
+
+@import "./overrided-slyles/mat-button.scss";
+@import "./overrided-slyles/mat-checkbox.scss";
+@import './styles-theme.scss';

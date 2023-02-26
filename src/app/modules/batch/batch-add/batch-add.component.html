@@ -1,0 +1,52 @@
+<app-ct-cols *ngIf="response">
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>{{ 'batch-add.Upload file for processing' | translate }}</app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body>
+                <app-ct-section-body-row>
+                    <mat-form-field appearance="outline">
+                        <mat-label> {{ 'batch-add.List of Source Codes' | translate }}</mat-label>
+                        <mat-select [(ngModel)]="sourceCode">
+                            <div *ngFor="let sourceCode of listOfSourceCodes">
+                                <mat-option [value]="sourceCode">{{sourceCode.uid}}</mat-option>
+                            </div>
+                        </mat-select>
+                        <mat-hint>{{ 'batch-add.This is a required field.' | translate }}</mat-hint>
+                    </mat-form-field>
+
+                    <br>
+                    <br>
+
+                    <div>
+                        <app-ct-file-upload #fileUpload acceptTypes=".zip, .xml"
+                            buttonTitle="{{'batch-add.Select File' | translate}}" (changed)="fileUploadChanged()">
+                        </app-ct-file-upload>
+                        <app-ct-hint>{{ 'batch-add.This is a required field.' | translate }}</app-ct-hint>
+                        <app-ct-hint>{{ 'batch-add.Only .xml and .zip files are supported' | translate }}</app-ct-hint>
+                    </div>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+            <app-ct-section-footer>
+                <app-ct-section-footer-row>
+                    <app-ct-flex justify-content="flex-end" gap="8px">
+                        <app-ct-flex-item>
+                            <button mat-stroked-button="mat-stroked-button" (click)="back()">
+                                {{ 'batch-add.Cancel' | translate }}</button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button="mat-flat-button" color="primary" [disabled]="!sourceCode || !file"
+                                (click)="upload()"> {{ 'batch-add.Upload-File-button' | translate }}</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-footer-row>
+            </app-ct-section-footer>
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="uploadResponse"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

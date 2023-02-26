@@ -1,0 +1,95 @@
+<app-ct-section *ngIf="simpleCompaniesResult">
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <app-ct-heading>Companies</app-ct-heading>
+                </app-ct-flex-item>
+                <app-ct-flex-item *ngIf="!dispatcherAssetModeService.isReplicated(simpleCompaniesResult.assetMode)">
+                    <ng-container *ngTemplateOutlet="addButtonTemplate"></ng-container>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-header-row>
+        <app-ct-section-header-row *ngIf="dispatcherAssetModeService.isReplicated(simpleCompaniesResult.assetMode)">
+            <app-ct-alert theme="info">
+                Management of companies are disabled, assetMode is 'replicated'.
+            </app-ct-alert>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <app-ct-section-body-row>
+            <ng-container *ngTemplateOutlet="mainTableTemplate"></ng-container>
+        </app-ct-section-body-row>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <app-ct-table-pagination (prev)="prevPage()" (next)="nextPage()"
+                        [pageableDefault]="simpleCompaniesResult.companies"></app-ct-table-pagination>
+                </app-ct-flex-item>
+                <app-ct-flex-item *ngIf="!dispatcherAssetModeService.isReplicated(simpleCompaniesResult.assetMode)">
+                    <ng-container *ngTemplateOutlet="addButtonTemplate"></ng-container>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>
+
+
+
+<ng-template #mainTableTemplate>
+    <ct-table [isWaiting]="isLoading">
+        <table class="mat-table" mat-table="mat-table" [dataSource]="dataSource">
+            <ng-container matColumnDef="uniqueId">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell="mat-cell" *matCellDef="let el">{{el.uniqueId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell="mat-cell" *matCellDef="let el">{{el.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="bts">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell="mat-cell" *matCellDef="let el">
+                    <app-ct-flex justify-content="flex-end" gap="9px">
+                        <ng-container *ngIf="authenticationService.isRoleMasterAdmin()">
+                            <ng-container
+                                *ngIf="!dispatcherAssetModeService.isReplicated(simpleCompaniesResult.assetMode)">
+                                <app-ct-flex-item>
+                                    <a mat-flat-button color="primary" size="forTableRow"
+                                        [routerLink]="['../',el.uniqueId,'edit']">Edit</a>
+                                </app-ct-flex-item>
+                            </ng-container>
+                        </ng-container>
+
+                        <ng-container *ngIf="authenticationService.isRoleMasterAdmin()">
+                            <app-ct-flex-item>
+                                <a mat-flat-button color="primary" size="forTableRow"
+                                    [routerLink]="['../',el.uniqueId,'accounts']">Accounts</a>
+                            </app-ct-flex-item>
+                        </ng-container>
+
+                        <ng-container
+                            *ngIf="authenticationService.isRoleMasterOperator() || authenticationService.isRoleMasterSupport()">
+                            <ng-container *ngIf="el.id !== 1">
+                                <app-ct-flex-item>
+                                    <a mat-flat-button color="primary" size="forTableRow"
+                                        [routerLink]="['../',el.uniqueId,'batches']">Batches</a>
+                                </app-ct-flex-item>
+                            </ng-container>
+                        </ng-container>
+                    </app-ct-flex>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table>
+    </ct-table>
+</ng-template>
+
+
+
+<ng-template #addButtonTemplate>
+    <button mat-flat-button color="primary" routerLink="../add"> Add New Company </button>
+</ng-template>

@@ -1,0 +1,20 @@
+<app-ct-cols>
+    <app-ct-col size="6">
+        <app-card-form-add-variable (cancelAction)="back()" (afterResponse)="updateStatusAfterAddVarible($event)">
+        </app-card-form-add-variable>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="addVariableResponse"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>
+<hr>
+<app-ct-cols>
+    <app-ct-col size="6">
+        <app-card-form-add-variable-with-storage (cancelAction)="back()"
+            (afterResponse)="updateStatusAfterAddVaribleStorage($event)">
+        </app-card-form-add-variable-with-storage>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="addVariableStorageResponse"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

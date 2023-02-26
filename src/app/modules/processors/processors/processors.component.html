@@ -1,0 +1,144 @@
+<app-ct-section *ngIf="processorResult">
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-flex justify-content="space-between" align-items="center">
+                <app-ct-flex-item>
+                    <app-ct-heading>Processors</app-ct-heading>
+                </app-ct-flex-item>
+                <app-ct-flex-item>
+                    <mat-slide-toggle [(ngModel)]="showStatusOfProcessor">
+                        Show current status of processor
+                    </mat-slide-toggle>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <app-ct-section-body-row>
+            <ct-table [isWaiting]="isLoading">
+                <table mat-table [dataSource]="dataSource" multiTemplateDataRows="multiTemplateDataRows">
+                    <ng-container matColumnDef="check">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <mat-checkbox 
+                                color="warn"
+                                (change)="$event ? masterToggle() : null" 
+                                [checked]="selection.hasValue() && isAllSelected()" 
+                                [indeterminate]="selection.hasValue() && !isAllSelected()">
+                            </mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let el">
+                            <mat-checkbox 
+                                color="warn"
+                                (click)="$event.stopPropagation()" 
+                                (change)="$event ? selection.toggle(el) : null" 
+                                [checked]="selection.isSelected(el)">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef>Id</th>
+                        <td mat-cell *matCellDef="let el">{{el.processor.id}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="ip">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <div class="no-wrap">Last seen</div>
+                            <div class="no-wrap">IP</div>
+                            <div class="no-wrap">Host name</div>
+                        </th>
+                        <td mat-cell *matCellDef="let el">
+                            <div>{{el.lastSeen | date:'MMM d, y, hh:mm'}}</div>
+                            <div>{{el.ip || '—'}}</div>
+                            <div>{{el.host || '—'}}</div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef>Description</th>
+                        <td mat-cell *matCellDef="let el">{{el.processor.description || '—'}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="empty">
+                        <td mat-cell *matCellDef="let el"> </td>
+                    </ng-container>
+                    <ng-container matColumnDef="env">
+                        <td mat-cell *matCellDef="let el" [attr.colspan]="columnsToDisplay.length - 1">
+                            <b>Status of Processor:</b>
+                            <app-ct-pre-10px>{{el.processor.status || '—'}} </app-ct-pre-10px>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="reason">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <div>Is active?</div>
+                            <div>problems with functions?</div>
+                            <div>Is blacklisted?</div>
+                            <div>Reason</div>
+                        </th>
+                        <td mat-cell *matCellDef="let el">
+                            <div [class]="el.active ? 'alert-success' : 'alert-danger'"> 
+                                {{el.active ? 'Yes' : 'No'}}
+                            </div>
+                            <div [class]="el.functionProblem ? 'alert-danger' : 'alert-success'">
+                                {{el.functionProblem ? 'Yes' : 'No'}} </div>
+                            <div [class]="el.blacklisted ? 'alert-danger' : 'alert-success'">
+                                {{el.blacklisted ? 'Yes' : 'No'}} </div>
+                            <div class="alert-danger"> 
+                                {{el.blacklistReason}}
+                            </div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="lastSeen">
+                        <th mat-header-cell *matHeaderCellDef>Last Seen </th>
+                        <td mat-cell *matCellDef="let el">
+                            <div *ngFor="let c of el.cores">
+                                <span>{{'#' + c.id + ': ' + c.code}}</span>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="bts">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td mat-cell *matCellDef="let el">
+                            <app-ct-flex justify-content="flex-end" gap="unit(1)">
+                                <app-ct-flex-item>
+                                    <button mat-flat-button
+                                        size="forTableRow" color="primary" 
+                                        [routerLink]="['/dispatcher/processors',el.processor.id,'edit']">
+                                            Edit
+                                    </button>
+                                </app-ct-flex-item>
+                                <app-ct-flex-item>
+                                    <button mat-flat-button
+                                        size="forTableRow" 
+                                        color="warn" 
+                                        (click)="delete(el)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </app-ct-flex-item>
+                            </app-ct-flex>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr class="first-row" mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+                    <tr class="second-row" mat-row *matRowDef="let row; columns: secondColumnsToDisplay;" [hidden]="!showStatusOfProcessor"></tr>
+                </table>
+            </ct-table>
+        </app-ct-section-body-row>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <button mat-flat-button 
+                color="warn" 
+                (click)="deleteMany()" 
+                [disabled]="isLoading || !selection.selected.length" 
+                title="Delete Checked">
+                    Delete Checked
+            </button>
+        </app-ct-section-footer-row>
+        <app-ct-section-footer-row>
+            <app-ct-flex-item>
+                <app-ct-table-pagination
+                    (prev)="prevPage()" 
+                    (next)="nextPage()" 
+                    [pageableDefault]="processorResult.items">
+                </app-ct-table-pagination>
+            </app-ct-flex-item>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>

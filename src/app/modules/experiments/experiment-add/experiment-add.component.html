@@ -1,0 +1,65 @@
+<app-ct-cols>
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>New Experiment</app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body>
+                <app-ct-section-body-row>
+                    <form [formGroup]="form" novalidate="novalidate">
+                        <mat-form-field appearance="outline">
+                            <mat-label>List of Uids of source codes</mat-label>
+                            <mat-select formControlName="sourceCodeUID">
+                                <div *ngFor="let sourceCode of sourceCodeUidsForCompany?.items">
+                                    <mat-option [value]="sourceCode.uid">{{sourceCode.uid}}</mat-option>
+                                </div>
+                            </mat-select>
+                            <mat-hint>This is a required field.</mat-hint>
+                        </mat-form-field>
+                        <br>
+                        <br>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input matInput="matInput" formControlName="name" />
+                            <mat-hint>This is a required field.</mat-hint>
+                        </mat-form-field>
+                        <br>
+                        <br>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <textarea matInput="matInput" formControlName="description"
+                                cdkTextareaAutosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"></textarea>
+                            <mat-hint>This is a required field.</mat-hint>
+                        </mat-form-field>
+                        <br>
+                        <br>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Experiment code</mat-label>
+                            <textarea matInput="matInput" formControlName="experimentCode"
+                                cdkTextareaAutosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"></textarea>
+                            <mat-hint>This is a required field.</mat-hint>
+                        </mat-form-field>
+                    </form>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+            <app-ct-section-footer>
+                <app-ct-section-footer-row>
+                    <app-ct-flex justify-content="flex-end" gap="8px">
+                        <app-ct-flex-item>
+                            <button mat-stroked-button="mat-stroked-button" (click)="cancel()">Cancel</button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button="mat-flat-button" (click)="create()" color="primary"
+                                [disabled]="form.invalid">Create</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-footer-row>
+            </app-ct-section-footer>
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="operationStatusRest"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

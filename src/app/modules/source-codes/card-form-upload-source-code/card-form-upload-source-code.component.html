@@ -1,0 +1,26 @@
+<app-ct-section>
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-heading>Upload SourceCode from file </app-ct-heading>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <app-ct-section-body-row>
+            <app-ct-file-upload (changed)="changed($event)" acceptTypes=".yml, .yaml"></app-ct-file-upload>
+        </app-ct-section-body-row>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <app-ct-flex justify-content="flex-end" gap="8px">
+                <app-ct-flex-item>
+                    <button mat-stroked-button (click)="cancel()">Cancel</button>
+                </app-ct-flex-item>
+                <app-ct-flex-item>
+                    <button mat-flat-button="mat-flat-button"
+                        [disabled]="!file?.fileInput?.nativeElement?.files?.length" color="primary"
+                        (click)="upload()">Upload</button>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>

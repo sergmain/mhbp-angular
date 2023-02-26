@@ -1,0 +1,33 @@
+<app-ct-cols>
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>Add Function</app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body>
+                <app-ct-section-body-row>
+                    <app-ct-file-upload #fileUpload></app-ct-file-upload>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+            <app-ct-section-footer>
+                <app-ct-section-footer-row>
+                    <app-ct-flex justify-content="flex-end" gap="8px">
+                        <app-ct-flex-item>
+                            <button mat-stroked-button="mat-stroked-button" (click)="cancel()">Cancel </button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button="mat-flat-button" (click)="upload()" color="primary"
+                                [disabled]="!fileUpload?.fileInput?.nativeElement?.files?.length">Upload
+                                function</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-footer-row>
+            </app-ct-section-footer>
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6" *ngIf="response">
+        <app-ct-rest-status [content]="response"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

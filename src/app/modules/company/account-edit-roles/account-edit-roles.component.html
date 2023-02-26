@@ -1,0 +1,24 @@
+<app-ct-cols *ngIf="accountWithRoleResult">
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>
+                        Edit Account #{{accountId}} Roles
+                    </app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body>
+                <app-ct-section-body-row>
+                    <div *ngFor="let el of roleModel | keyvalue" style="margin: 0.5em 0">
+                        <mat-checkbox [(ngModel)]="el.value" (change)="save(el)" [disabled]="isLoading">{{ el.key}}
+                        </mat-checkbox>
+                    </div>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="operationStatusRest"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

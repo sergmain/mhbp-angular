@@ -1,0 +1,15 @@
+
+<app-ct-section>
+  <app-ct-section-header>
+    <app-ct-section-header-row>
+      <app-ct-heading>
+        <div>{{ 'batch-status.Status of execution of batch _batchId_' | translate:{batchId: batchId} }} </div>
+      </app-ct-heading>
+    </app-ct-section-header-row>
+  </app-ct-section-header>
+  <app-ct-section-body>
+    <app-ct-section-body-row *ngIf="[states.wait,states.show].includes(currentState)">
+      <app-ct-pre>{{response.console}}</app-ct-pre>
+    </app-ct-section-body-row>
+  </app-ct-section-body>
+</app-ct-section>

@@ -1,0 +1,97 @@
+<app-ct-section *ngIf="accountsResult">
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <app-ct-heading>Accounts</app-ct-heading>
+                </app-ct-flex-item>
+                <app-ct-flex-item *ngIf="!dispatcherAssetModeService.isReplicated(accountsResult.assetMode)">
+                    <ng-container *ngTemplateOutlet="addButtonTemplate"></ng-container>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-header-row>
+        <app-ct-section-header-row *ngIf="dispatcherAssetModeService.isReplicated(accountsResult.assetMode)">
+            <app-ct-alert theme="info">
+                Management of accounts are disabled, assetMode is 'replicated'.
+            </app-ct-alert>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <app-ct-section-body-row>
+            <ct-table [isWaiting]="isLoading">
+                <table mat-table [dataSource]="dataSource">
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef>ID </th>
+                        <td mat-cell *matCellDef="let el">{{el.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="isEnabled">
+                        <th mat-header-cell *matHeaderCellDef>Is enabled </th>
+                        <td mat-cell *matCellDef="let el">{{el.enabled ? 'Yes':'No'}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="login">
+                        <th mat-header-cell *matHeaderCellDef>Login </th>
+                        <td mat-cell *matCellDef="let el">{{el.username}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="publicName">
+                        <th mat-header-cell *matHeaderCellDef>Public name </th>
+                        <td mat-cell *matCellDef="let el">{{el.publicName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="role">
+                        <th mat-header-cell *matHeaderCellDef>Roles</th>
+                        <td mat-cell *matCellDef="let el">{{el.roles}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="createdOn">
+                        <th mat-header-cell *matHeaderCellDef>Created On </th>
+                        <td mat-cell *matCellDef="let el">
+                            {{el.createdOn | date:'HH:mm:ss, MMM&nbsp;d,&nbsp;yyyy'}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="bts">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td mat-cell *matCellDef="let el">
+                            <app-ct-flex justify-content="flex-end" gap="9px"
+                                *ngIf="!dispatcherAssetModeService.isReplicated(accountsResult.assetMode)">
+                                <app-ct-flex-item>
+                                    <a mat-flat-button size="forTableRow" [routerLink]="['../','account',el.id,'edit']"
+                                        color="primary"> Edit</a>
+                                </app-ct-flex-item>
+                                <app-ct-flex-item>
+                                    <a mat-flat-button size="forTableRow"
+                                        [routerLink]="['../','account',el.id,'edit-roles']" color="primary">Roles</a>
+                                </app-ct-flex-item>
+                                <app-ct-flex-item>
+                                    <a mat-flat-button size="forTableRow"
+                                        [routerLink]="['../','account',el.id,'edit-password']" color="primary">
+                                        Change Password</a>
+                                </app-ct-flex-item>
+                            </app-ct-flex>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"> </tr>
+                    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"> </tr>
+                </table>
+            </ct-table>
+        </app-ct-section-body-row>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <app-ct-flex justify-content="flex-start" gap="8px">
+                        <app-ct-table-pagination (prev)="prevPage()" (next)="nextPage()"
+                            [pageableDefault]="accountsResult.accounts"></app-ct-table-pagination>
+                    </app-ct-flex>
+                </app-ct-flex-item>
+                <app-ct-flex-item *ngIf="!dispatcherAssetModeService.isReplicated(accountsResult.assetMode)">
+                    <ng-container *ngTemplateOutlet="addButtonTemplate"></ng-container>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>
+
+
+<ng-template #addButtonTemplate>
+    <button mat-flat-button color="primary" [routerLink]="['../','account','add']">
+        Add New Account
+    </button>
+</ng-template>

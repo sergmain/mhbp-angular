@@ -1,0 +1,33 @@
+<app-ct-cols align-items="flex-start" *ngIf="sourceCodeResponse">
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>Edit SourceCode {{sourceCode ? sourceCode.id : ''}}</app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body>
+                <app-ct-section-body-row>
+                    <app-ct-section-content>
+                        <app-ct-pre>{{sourceCode.source}}</app-ct-pre>
+                    </app-ct-section-content>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+            <app-ct-section-footer>
+                <app-ct-section-footer-row>
+                    <app-ct-flex justify-content="flex-end" gap="8px">
+                        <app-ct-flex-item>
+                            <button mat-stroked-button="mat-stroked-button" (click)="back()">Back</button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button="mat-flat-button" (click)="validate()" color="primary">Validate</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-footer-row>
+            </app-ct-section-footer>
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status class="uploadRestStatus" [content]="sourceCodeResponseForValidate"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

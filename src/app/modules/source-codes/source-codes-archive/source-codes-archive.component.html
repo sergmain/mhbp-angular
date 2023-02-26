@@ -1,0 +1,58 @@
+<app-ct-section *ngIf="sourceCodesResult">
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-heading>Source Codes</app-ct-heading>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <app-ct-section-body-row>
+            <ct-table [isWaiting]="isLoading">
+                <table class="mat-table" mat-table="mat-table" [dataSource]="dataSource">
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>Id </th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="uid">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>UID of sourceCode</th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.uid}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="createdOn">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef> Created on </th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.createdOn | date:'MMM d, yyyy, HH:mm:ss'}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="valid">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>Is valid? </th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.valid}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="locked">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>Is locked? </th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.locked}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="bts">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef> </th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">
+                            <app-ct-flex justify-content="flex-end" gap="9px">
+                                <app-ct-flex-item>
+                                    <button mat-flat-button="mat-flat-button" color="warn" size="forTableRow"
+                                        (click)="delete(el)" title="Delete">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </app-ct-flex-item>
+                            </app-ct-flex>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row="mat-header-row" *matHeaderRowDef="columnsToDisplay"> </tr>
+                    <tr mat-row="mat-row" *matRowDef="let row; columns: columnsToDisplay;"
+                        [class.deleted-table-row]="deletedRows.includes(row)"></tr>
+                </table>
+            </ct-table>
+        </app-ct-section-body-row>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <app-ct-table-pagination [pageableDefault]="sourceCodesResult?.items" [globalDisable]="isLoading"
+                (next)="nextPage()" (prev)="prevPage()"></app-ct-table-pagination>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>

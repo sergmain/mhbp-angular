@@ -1,0 +1,56 @@
+<app-ct-section>
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-heading>Create Global variable with git or disk storage</app-ct-heading>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <form [formGroup]="form" novalidate="novalidate">
+            <app-ct-section-body-row>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Variable</mat-label>
+                    <input autocomplete="off" matInput="matInput" formControlName="poolCode" />
+                    <mat-hint>This is a required field.</mat-hint>
+                </mat-form-field>
+            </app-ct-section-body-row>
+            <app-ct-section-body-row>
+                <app-ct-section-content>
+                    <mat-hint>
+                        <pre style="font-size: 80%; line-height: 1.1;"><b>Example:</b>
+sourcing: disk 
+disk: 
+  code: storage-code 
+  mask: '*'</pre>
+
+                        <br>
+                        <pre style="font-size: 80%; line-height: 1.1;"><b>Example:</b>
+sourcing: git
+git:
+  repo: https://github.com/sergmain/metaheuristic.git
+  branch: master
+  commit: b25331edba72a1a901634212ac55752238fd2dd5</pre>
+                    </mat-hint>
+                </app-ct-section-content>
+            </app-ct-section-body-row>
+            <app-ct-section-body-row>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Params of variables</mat-label>
+                    <textarea autocomplete="off" matInput="matInput" formControlName="params"
+                        cdkTextareaAutosize="cdkTextareaAutosize" style="min-height:5em;overflow: hidden;"></textarea>
+                </mat-form-field>
+            </app-ct-section-body-row>
+        </form>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <app-ct-flex justify-content="flex-end" gap="8px">
+                <app-ct-flex-item>
+                    <button mat-stroked-button (click)="cancel()">Cancel</button>
+                </app-ct-flex-item>
+                <app-ct-flex-item>
+                    <button mat-flat-button (click)="create()" color="primary" [disabled]="form.invalid">Create</button>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>

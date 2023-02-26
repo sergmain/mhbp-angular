@@ -1,0 +1,12 @@
+<app-ct-section *ngIf="!isLoading">
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-heading>Batch #{{batchDataStatus?.batchId}}</app-ct-heading>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <app-ct-section-body-row>
+            <app-ct-pre>{{batchDataStatus?.console}}</app-ct-pre>
+        </app-ct-section-body-row>
+    </app-ct-section-body>
+</app-ct-section>

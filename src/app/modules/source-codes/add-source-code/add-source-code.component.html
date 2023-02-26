@@ -1,0 +1,21 @@
+<app-ct-cols>
+    <app-ct-col size="6">
+        <card-form-add-source-code (abort)="back()" (responseChange)="afterNewSourceCode($event)">
+        </card-form-add-source-code>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status class="addRestStatus" [content]="newSourceCodeResponse"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>
+
+<hr>
+
+<app-ct-cols>
+    <app-ct-col size="6">
+        <card-form-upload-source-code (abort)="back()" (responseChange)="afterUploadSourceCode($event)">
+        </card-form-upload-source-code>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status class="uploadRestStatus" [content]="uploadSourceCodeResponse"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

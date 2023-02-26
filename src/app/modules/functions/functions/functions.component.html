@@ -1,0 +1,97 @@
+<app-ct-section *ngIf="functionsResult">
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <app-ct-heading>Functions</app-ct-heading>
+                </app-ct-flex-item>
+                <app-ct-flex-item>
+                    <app-ct-flex justify-content="flex-end" align-items="center" gap="16px">
+                        <app-ct-flex-item>
+                            <mat-slide-toggle [(ngModel)]="showParams">Show Params</mat-slide-toggle>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item *ngIf="!dispatcherAssetModeService.isReplicated(functionsResult.assetMode)">
+                            <ng-container *ngTemplateOutlet="addButtonTemplate"></ng-container>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-header-row>
+        <app-ct-section-header-row *ngIf="dispatcherAssetModeService.isReplicated(functionsResult.assetMode)">
+            <app-ct-alert theme="info">Upload and deletion of functions are disabled, assetMode is 'replicated'.</app-ct-alert>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <app-ct-section-body-row>
+            <ng-container *ngTemplateOutlet="MainTableTemplate"></ng-container>
+        </app-ct-section-body-row>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <!-- <ct-table-pagination [pageableDefault]="functionsResult.items" [globalDisable]="false"
+                        (next)="nextPage()" (prev)="prevPage()"></ct-table-pagination> -->
+                </app-ct-flex-item>
+                <app-ct-flex-item *ngIf="!dispatcherAssetModeService.isReplicated(functionsResult.assetMode)">
+                    <ng-container *ngTemplateOutlet="addButtonTemplate"></ng-container>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>
+
+
+
+<ng-template #MainTableTemplate>
+    <ct-table [isWaiting]="isLoading">
+        <table class="mat-table" mat-table [dataSource]="dataSource" multiTemplateDataRows>
+            <ng-container matColumnDef="code">
+                <th mat-header-cell *matHeaderCellDef>
+                    Code
+                </th>
+                <td mat-cell *matCellDef="let el">{{ el.code }}</td>
+            </ng-container>
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef>
+                    Type
+                </th>
+                <td mat-cell *matCellDef="let el">{{ el.type }}</td>
+            </ng-container>
+            <ng-container matColumnDef="params">
+                <th mat-header-cell *matHeaderCellDef>
+                    Params
+                </th>
+                <td mat-cell *matCellDef="let el">
+                    <div [hidden]="!showParams">
+                        <app-ct-pre>{{ el.params }}</app-ct-pre>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="bts">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let el">
+                    <app-ct-flex justify-content="flex-end" gap="8px"
+                        *ngIf="!dispatcherAssetModeService.isReplicated(functionsResult.assetMode)">
+                        <app-ct-flex-item>
+                            <button mat-flat-button color="warn" size="forTableRow" (click)="delete(el)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay"
+                [class.deleted-table-row]="deletedRows.includes(row)"></tr>
+        </table>
+    </ct-table>
+</ng-template>
+
+
+
+<ng-template #addButtonTemplate>
+    <a routerLink="/dispatcher/functions/add">
+        <button mat-flat-button color="primary"> Add Function </button>
+    </a>
+</ng-template>

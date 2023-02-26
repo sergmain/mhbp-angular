@@ -1,0 +1,79 @@
+<app-ct-section *ngIf="globalVariablesResult">
+    <app-ct-section-header>
+        <app-ct-section-header-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <app-ct-heading>Variables</app-ct-heading>
+                </app-ct-flex-item>
+                <app-ct-flex-item>
+                    <ng-container *ngTemplateOutlet="addVariableButton"></ng-container>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-header-row>
+    </app-ct-section-header>
+    <app-ct-section-body>
+        <app-ct-section-body-row>
+            <ct-table [isWaiting]="isLoading">
+                <table class="mat-table" mat-table="mat-table" [dataSource]="dataSource">
+                    <ng-container matColumnDef="id" sticky="sticky">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>id </th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="uploadTs">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>Upload Date </th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.uploadTs | date}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="variable">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>Variable</th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.variable}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="filename">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>Filename</th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">{{el.filename}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="params">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef>Params</th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">
+                            <app-ct-pre>{{el.params}}</app-ct-pre>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="bts" stickyEnd="stickyEnd">
+                        <th mat-header-cell="mat-header-cell" *matHeaderCellDef> </th>
+                        <td mat-cell="mat-cell" *matCellDef="let el">
+                            <app-ct-flex justify-content="flex-end">
+                                <app-ct-flex-item>
+                                    <button mat-flat-button="mat-flat-button" color="warn" size="forTableRow"
+                                        (click)="delete(el)">
+                                        <mat-icon>delete </mat-icon>
+                                    </button>
+                                </app-ct-flex-item>
+                            </app-ct-flex>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row="mat-header-row" *matHeaderRowDef="columnsToDisplay;"> </tr>
+                    <tr mat-row="mat-row" *matRowDef="let row; columns: columnsToDisplay;"
+                        [class.deleted-table-row]="deletedRows.includes(row)"></tr>
+                </table>
+            </ct-table>
+        </app-ct-section-body-row>
+    </app-ct-section-body>
+    <app-ct-section-footer>
+        <app-ct-section-footer-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <app-ct-table-pagination (next)="nextPage()" (prev)="prevPage()"
+                        [pageableDefault]="globalVariablesResult.items" [globalDisable]="isLoading">
+                    </app-ct-table-pagination>
+                </app-ct-flex-item>
+                <app-ct-flex-item>
+                    <ng-container *ngTemplateOutlet="addVariableButton"></ng-container>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-footer-row>
+    </app-ct-section-footer>
+</app-ct-section>
+
+
+<ng-template #addVariableButton>
+    <button mat-flat-button="mat-flat-button" color="primary" routerLink="add">Create variable</button>
+</ng-template>

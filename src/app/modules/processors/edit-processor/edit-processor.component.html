@@ -1,0 +1,37 @@
+<app-ct-cols *ngIf="processorResponse">
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>Edit Processor {{processor ? processor.id : '...'}}</app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body>
+                <app-ct-section-body-row>
+                    <app-ct-section-content>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Description </mat-label>
+                            <textarea matInput="matInput" [(ngModel)]="processor.description" value=""
+                                cdkTextareaAutosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"> </textarea>
+                        </mat-form-field>
+                    </app-ct-section-content>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+            <app-ct-section-footer>
+                <app-ct-section-footer-row>
+                    <app-ct-flex justify-content="flex-end" gap="8px">
+                        <app-ct-flex-item>
+                            <button mat-stroked-button="mat-stroked-button" (click)="back()">Cancel</button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button="mat-flat-button" (click)="save()" color="primary">Save</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-footer-row>
+            </app-ct-section-footer>
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="processorResponse"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>
