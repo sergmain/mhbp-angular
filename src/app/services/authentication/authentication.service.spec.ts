@@ -52,8 +52,8 @@ describe('Authentication Service', () => {
     it('.isRoleOperator() === true', () => {
         expect(authenticationService.isRoleOperator()).toBeTruthy();
     });
-    it('.isRoleMasterSupport() === false', () => {
-        expect(authenticationService.isRoleMasterSupport()).toBeFalsy();
+    it('.isRoleMainSupport() === false', () => {
+        expect(authenticationService.isRoleMainSupport()).toBeFalsy();
     });
     it('.logout()', fakeAsync(() => {
         authenticationService.logout().subscribe();

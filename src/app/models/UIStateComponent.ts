@@ -12,20 +12,20 @@ export class UIStateComponent {
         Manager: boolean;
         Operator: boolean;
         Data: boolean;
-        MasterAdmin: boolean;
-        MasterOperator: boolean;
-        MasterSupport: boolean;
-        MasterAssetManager: boolean;
+        MainAdmin: boolean;
+        MainOperator: boolean;
+        MainSupport: boolean;
+        MainAssetManager: boolean;
     } {
         return {
             Admin: this.authenticationService.isRoleAdmin(),
             Manager: this.authenticationService.isRoleManager(),
             Operator: this.authenticationService.isRoleOperator(),
             Data: this.authenticationService.isRoleData(),
-            MasterAdmin: this.authenticationService.isRoleMasterAdmin(),
-            MasterOperator: this.authenticationService.isRoleMasterOperator(),
-            MasterSupport: this.authenticationService.isRoleMasterSupport(),
-            MasterAssetManager: this.authenticationService.isRoleMasterAssetManager()
+            MainAdmin: this.authenticationService.isRoleMainAdmin(),
+            MainOperator: this.authenticationService.isRoleMainOperator(),
+            MainSupport: this.authenticationService.isRoleMainSupport(),
+            MainAssetManager: this.authenticationService.isRoleMainAssetManager()
         };
     }
 

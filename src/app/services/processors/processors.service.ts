@@ -36,7 +36,7 @@ export class ProcessorsService {
 
 
     // @PostMapping("/processor-bulk-delete-commit")
-    // @PreAuthorize("hasAnyRole('MASTER_OPERATOR')")
+    // @PreAuthorize("hasAnyRole('MAIN_OPERATOR')")
     // public ProcessorData.BulkOperations  processProcessorBulkDeleteCommit(String processorIds) {
     //     ProcessorData.BulkOperations  r = processorTopLevelService.processProcessorBulkDeleteCommit(processorIds);
     //     return r;

@@ -114,7 +114,7 @@
                                         Origin File
                                     </button>
                                 </app-ct-flex-item>
-                                <ng-container *ngIf="isRole.MasterOperator">
+                                <ng-container *ngIf="isRole.MainOperator">
                                     <app-ct-flex-item>
                                         <button mat-flat-button 
                                             color="warn" 
@@ -142,7 +142,7 @@
         </app-ct-section-body-row>
     </app-ct-section-body>
     <app-ct-section-footer>
-        <ng-container *ngIf="isRole.MasterOperator">
+        <ng-container *ngIf="isRole.MainOperator">
             <app-ct-section-footer-row>
                 <button mat-flat-button 
                     color="warn" 
@@ -205,7 +205,7 @@
 
 
 <ng-template #uploadButtonTemplate>
-    <ng-container *ngIf="isRole.MasterOperator">
+    <ng-container *ngIf="isRole.MainOperator">
         <button mat-flat-button color="primary" [routerLink]="['upload']">Upload files and start
             processing</button>
     </ng-container>

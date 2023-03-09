@@ -65,7 +65,7 @@ export class CompanyBatchListComponent extends UIStateComponent implements OnIni
     }
 
     get columnsToDisplay(): string[] {
-        if (this.isRole.MasterOperator) {
+        if (this.isRole.MainOperator) {
             return [
                 'check',
                 'id',

@@ -53,7 +53,7 @@
                 <th mat-header-cell *matHeaderCellDef> </th>
                 <td mat-cell="mat-cell" *matCellDef="let el">
                     <app-ct-flex justify-content="flex-end" gap="9px">
-                        <ng-container *ngIf="authenticationService.isRoleMasterAdmin()">
+                        <ng-container *ngIf="authenticationService.isRoleMainAdmin()">
                             <ng-container
                                 *ngIf="!dispatcherAssetModeService.isReplicated(simpleCompaniesResult.assetMode)">
                                 <app-ct-flex-item>
@@ -63,7 +63,7 @@
                             </ng-container>
                         </ng-container>
 
-                        <ng-container *ngIf="authenticationService.isRoleMasterAdmin()">
+                        <ng-container *ngIf="authenticationService.isRoleMainAdmin()">
                             <app-ct-flex-item>
                                 <a mat-flat-button color="primary" size="forTableRow"
                                     [routerLink]="['../',el.uniqueId,'accounts']">Accounts</a>
@@ -71,7 +71,7 @@
                         </ng-container>
 
                         <ng-container
-                            *ngIf="authenticationService.isRoleMasterOperator() || authenticationService.isRoleMasterSupport()">
+                            *ngIf="authenticationService.isRoleMainOperator() || authenticationService.isRoleMainSupport()">
                             <ng-container *ngIf="el.id !== 1">
                                 <app-ct-flex-item>
                                     <a mat-flat-button color="primary" size="forTableRow"

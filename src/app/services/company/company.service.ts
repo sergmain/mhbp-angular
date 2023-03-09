@@ -65,7 +65,7 @@ export class CompanyService {
 
 
     // @PostMapping("/company-account-edit-commit/{companyUniqueId}")
-    // @PreAuthorize("hasAnyRole('MASTER_ADMIN')")
+    // @PreAuthorize("hasAnyRole('MAIN_ADMIN')")
     // public OperationStatusRest editFormCommit(Long id, String publicName, boolean enabled, @PathVariable Long companyUniqueId) {
     //     OperationStatusRest operationStatusRest = companyAccountTopLevelService.editFormCommit(id, publicName, enabled, companyUniqueId);
     //     return operationStatusRest;

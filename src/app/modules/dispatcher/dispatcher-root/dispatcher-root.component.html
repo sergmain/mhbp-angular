@@ -3,7 +3,7 @@
         <div class="navigation">
 
             <button *ngIf="
-                    isRole.MasterAssetManager ||
+                    isRole.MainAssetManager ||
                     isRole.Admin ||
                     isRole.Data ||
                     isRole.Manager
@@ -25,7 +25,7 @@
             </button>
 
             <button *ngIf="
-                    isRole.MasterAssetManager ||
+                    isRole.MainAssetManager ||
                     isRole.Admin ||
                     isRole.Data
                 " 
@@ -55,9 +55,9 @@
             </button>
 
             <button *ngIf="
-                    isRole.MasterAdmin ||
-                    isRole.MasterOperator ||
-                    isRole.MasterSupport
+                    isRole.MainAdmin ||
+                    isRole.MainOperator ||
+                    isRole.MainSupport
                 " 
                 mat-button 
                 routerLinkActive="active"
