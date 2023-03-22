@@ -78,21 +78,6 @@
                 </app-ct-flex-item>
 
                 <app-ct-flex-item *ngIf="
-                    isRole.Admin ||
-                    isRole.Data ||
-                    isRole.Manager ">
-                    <button class="mat-button mat-button--menu-item" mat-button routerLinkActive="active" routerLink="/ai">{{ 'app-view.Ai' | translate }}</button>
-                </app-ct-flex-item>
-
-                <app-ct-flex-item *ngIf="
-                    isRole.Admin ||
-                    isRole.Data ||
-                    isRole.Manager ||
-                    isRole.Operator ">
-                    <button class="mat-button mat-button--menu-item" mat-button routerLinkActive="active" routerLink="/batch">{{ 'app-view.Batch' | translate }}</button>
-                </app-ct-flex-item>
-
-                <app-ct-flex-item *ngIf="
                     isRole.MainAdmin ||
                     isRole.MainOperator ||
                     isRole.MainSupport ||
