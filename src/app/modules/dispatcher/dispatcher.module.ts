@@ -88,13 +88,13 @@ export const DispatcherRoutes: Routes = [
         }
     },
     {
-        path: 'company',
+        path: 'evaluation',
         canActivate: [RoleRouteGuard],
         component: DispatcherRootComponent,
-        loadChildren: () => import('src/app/modules/company/company.module').then(m => m.CompnyModule),
+        loadChildren: () => import('src/app/modules/evaluation/evaluation.module').then(m => m.EvaluationModule),
         data: {
-            requiredRoles: [Role.MainAdmin, Role.MainOpertator, Role.MainSupport],
-            section: 'company'
+            requiredRoles: [Role.MainAdmin, Role.MainOpertator, Role.MainSupport, Role.Operator],
+            section: 'evaluations'
         }
     }
 ];
