@@ -6,18 +6,6 @@
                     isRole.MainAssetManager ||
                     isRole.Admin ||
                     isRole.Data ||
-                    isRole.Manager
-                " 
-                mat-button  
-                routerLinkActive="active" 
-                routerLink="/dispatcher/source-codes">
-                    {{ 'dispatcher.SourceCodes' | translate }}
-            </button>
-
-            <button *ngIf="
-                    isRole.MainAssetManager ||
-                    isRole.Admin ||
-                    isRole.Data ||
                     isRole.Operator ||
                     isRole.Manager
                 "

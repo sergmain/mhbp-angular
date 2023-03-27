@@ -49,5 +49,12 @@
 	"dispatcher.Functions": "Functions",
 	"dispatcher.Processors": "Processors",
 	"dispatcher.SourceCodes": "Source Codes",
-	"dispatcher.Variables": "Variables"
+	"dispatcher.Variables": "Variables",
+
+	"evaluation.StartedOn": "Started on",
+	"evaluation.FinishedOn": "Finished on",
+	"evaluation.ProviderCode": "Provider code",
+	"evaluation.WithoutError": "No error",
+	"evaluation.WithError": "Fail",
+	"evaluation.SystemError": "SystemError"
 }

@@ -13,10 +13,10 @@ import {SimpleAccount} from "@services/accounts";
   styleUrls: ['./evaluations.component.sass']
 })
 export class EvaluationsComponent extends UIStateComponent implements OnInit {
-
-  // columnsToDisplay: string[] = ['sessionId', 'createdOn', 'finishedOn',
-  //   'sessionStatus', 'safe', 'normal', 'fail', 'error', 'providerCode', 'modelInfo'];
-  columnsToDisplay: string[] = ['sessionId', 'startedOn'];
+//   columnsToDisplay: string[] = ['sessionId', 'startedOn', 'finishedOn',
+//     'sessionStatus', 'safe', 'normalPercent', 'failPercent', 'errorPercent', 'providerCode', 'modelInfo'];
+  columnsToDisplay: string[] = ['sessionId', 'startedOn', 'providerCode',
+    'normalPercent', 'failPercent', 'errorPercent'];
   simpleEvaluationsResult: SimpleEvaluationsResult;
   dataSource = new MatTableDataSource<SimpleEvaluation>([]);
 
@@ -40,13 +40,6 @@ export class EvaluationsComponent extends UIStateComponent implements OnInit {
           next: simpleEvaluationsResult => {
             this.simpleEvaluationsResult = simpleEvaluationsResult;
             // console.log('EvaluationsComponent.simpleEvaluationsResult: ' + JSON.stringify(this.simpleEvaluationsResult));
-            // console.log('EvaluationsComponent.simpleEvaluationsResult: #2');
-            // console.log('EvaluationsComponent.simpleEvaluationsResult: #2.1 ' + this.simpleEvaluationsResult.status);
-            // console.log('EvaluationsComponent.simpleEvaluationsResult: #2.2 ' + this.simpleEvaluationsResult.evaluations);
-            // console.log('EvaluationsComponent.simpleEvaluationsResult: #2.3 ' + JSON.stringify(this.simpleEvaluationsResult));
-            // console.log('EvaluationsComponent.simpleEvaluationsResult: #2.4 ' + JSON.stringify(this.simpleEvaluationsResult.status));
-            // console.log('EvaluationsComponent.simpleEvaluationsResult: #2.5 ' + JSON.stringify(this.simpleEvaluationsResult.evaluations));
-            // let cnt = this.simpleEvaluationsResult===undefined ? [] : this.simpleEvaluationsResult.evaluations.content || [];
             this.dataSource = new MatTableDataSource(this.simpleEvaluationsResult.evaluations.content || []);
             // console.log('EvaluationsComponent.simpleEvaluationsResult: #3');
           },

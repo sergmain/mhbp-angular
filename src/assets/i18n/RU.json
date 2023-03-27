@@ -49,5 +49,12 @@
 	"dispatcher.Functions": "Функции",
 	"dispatcher.Processors": "Обработчики",
 	"dispatcher.SourceCodes": "Исходный код",
-	"dispatcher.Variables": "Переменные"
+	"dispatcher.Variables": "Переменные",
+
+	"evaluation.StartedOn": "Started on",
+	"evaluation.FinishedOn": "Finished on",
+	"evaluation.ProviderCode": "Provider code",
+	"evaluation.WithoutError": "No error",
+	"evaluation.WithError": "Fail",
+	"evaluation.SystemError": "SystemError"
 }
