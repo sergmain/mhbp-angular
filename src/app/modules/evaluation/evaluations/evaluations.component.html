@@ -17,8 +17,14 @@
         <app-ct-section-footer-row>
             <app-ct-flex justify-content="space-between">
                 <app-ct-flex-item>
-                    <app-ct-table-pagination (prev)="prevPage()" (next)="nextPage()"
-                                             [pageableDefault]="simpleEvaluationsResult.evaluations"></app-ct-table-pagination>
+                    <app-ct-flex justify-content="flex-start" gap="8px">
+                        <app-ct-table-pagination
+                                [pageableDefault]="simpleEvaluationsResult.evaluations"
+                                [globalDisable]="isLoading"
+                                (next)="nextPage()"
+                                (prev)="prevPage()">
+                        </app-ct-table-pagination>
+                    </app-ct-flex>
                 </app-ct-flex-item>
             </app-ct-flex>
         </app-ct-section-footer-row>
@@ -30,14 +36,14 @@
 <ng-template #mainTableTemplate>
     <ct-table [isWaiting]="isLoading">
         <table class="mat-table" mat-table="mat-table" [dataSource]="dataSource">
-            <ng-container matColumnDef="uniqueId">
+            <ng-container matColumnDef="sessionId">
                 <th mat-header-cell *matHeaderCellDef>SessionId</th>
                 <td mat-cell="mat-cell" *matCellDef="let el">{{el.sessionId}} </td>
             </ng-container>
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef>Created On</th>
+            <ng-container matColumnDef="startedOn">
+                <th mat-header-cell *matHeaderCellDef>{{ 'evaluation.Started On' | translate }}</th>
                 <td mat-cell *matCellDef="let el">
-                    {{el.createdOn | date:'MMM d, yyyy, HH:mm:ss'}} </td>
+                    {{el.startedOn | date:'MMM d, yyyy, HH:mm:ss'}} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
             <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>

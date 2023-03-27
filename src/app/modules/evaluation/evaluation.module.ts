@@ -11,10 +11,6 @@ import { EvaluationsComponent } from './evaluations/evaluations.component';
 export const EvaluationRoutes: Routes = [
     {
         path: '',
-        component: EvaluationsComponent,
-    },
-    {
-        path: 'evaluations',
         component: EvaluationsComponent
     }
 ];

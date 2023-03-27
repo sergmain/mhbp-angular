@@ -14,7 +14,7 @@ import { RoleRouteGuard } from '@src/app/guards/role-route.guard';
 const commonRequiredRoles: Role[] = [
     Role.MainAssetManager,
     Role.MainAdmin,
-    Role.MainOpertator,
+    Role.MainOperator,
     Role.MainSupport,
     Role.Admin,
     Role.Data,
@@ -63,7 +63,7 @@ export const DispatcherRoutes: Routes = [
         component: DispatcherRootComponent,
         loadChildren: () => import('@src/app/modules/functions/functions.module').then(m => m.FunctionsModule),
         data: {
-            requiredRoles: [Role.MainAssetManager, Role.Admin, Role.Data],
+            requiredRoles: [Role.MainAssetManager, Role.Admin, Role.Data, Role.Manager],
             section: 'functions'
         }
     },
@@ -93,7 +93,7 @@ export const DispatcherRoutes: Routes = [
         component: DispatcherRootComponent,
         loadChildren: () => import('src/app/modules/evaluation/evaluation.module').then(m => m.EvaluationModule),
         data: {
-            requiredRoles: [Role.MainAdmin, Role.MainOpertator, Role.MainSupport, Role.Operator],
+            requiredRoles: [Role.MainAdmin, Role.MainOperator, Role.MainSupport, Role.Manager],
             section: 'evaluations'
         }
     }

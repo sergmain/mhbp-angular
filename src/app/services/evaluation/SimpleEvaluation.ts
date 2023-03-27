@@ -1,9 +1,9 @@
 export interface SimpleEvaluation {
     sessionId: number;
-    createdOn: number;
-    finishedOn: number;
+    startedOn: number;
+    finishedOn?: number;
     sessionStatus: string;
-    safe: string;
+    safe?: string;
     normal: number;
     fail: number;
     error: number;

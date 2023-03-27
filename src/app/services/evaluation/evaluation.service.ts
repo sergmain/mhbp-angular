@@ -1,18 +1,11 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from '@src/environments/environment';
-import { from, Observable, of, Subscription } from 'rxjs';
-import { SimpleEvaluationsResult } from './SimpleEvaluationsResult';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {environment} from '@src/environments/environment';
+import {Observable} from 'rxjs';
+import {SimpleEvaluationsResult} from './SimpleEvaluationsResult';
 
 
 const url = (s: string): string => `${environment.baseUrl}dispatcher/evaluation/${s}`;
-
-interface ProcessableItem {
-    id: string;
-    companyId: string;
-    response: HttpResponse<Blob>;
-    fileName: string;
-}
 
 @Injectable({ providedIn: 'root' })
 export class EvaluationService {
@@ -20,11 +13,9 @@ export class EvaluationService {
         private http: HttpClient
     ) { }
 
-    evaluations = (page: string): Observable<SimpleEvaluationsResult> => {
+    getEvaluations(page: string): Observable<SimpleEvaluationsResult> {
         let newUrl = url('evaluations')
-        console.log('newUrl: ' + newUrl);
+        console.log('EvaluationService.newUrl: ' + newUrl);
         return this.http.get<SimpleEvaluationsResult>(newUrl, {params: {page}});
     }
-
-
 }

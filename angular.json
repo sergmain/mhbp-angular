@@ -49,6 +49,10 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "optimization": false,
+              "sourceMap": true
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -84,6 +88,8 @@
             "browserTarget": "metaheuristic-app:build"
           },
           "configurations": {
+            "development": {
+            },
             "production": {
               "browserTarget": "metaheuristic-app:build:production"
             }
@@ -136,6 +142,8 @@
             "devServerTarget": "metaheuristic-app:serve"
           },
           "configurations": {
+            "development": {
+            },
             "production": {
               "devServerTarget": "metaheuristic-app:serve:production"
             }
