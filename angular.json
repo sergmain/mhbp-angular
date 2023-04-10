@@ -14,7 +14,7 @@
     }
   },
   "projects": {
-    "metaheuristic-app": {
+    "mhbp-angular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -33,7 +33,7 @@
               "jszip"
             ],
             "aot": true,
-            "outputPath": "dist/metaheuristic-app",
+            "outputPath": "dist/mhbp-angular",
             "resourcesOutputPath": "resources",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -85,20 +85,20 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "metaheuristic-app:build"
+            "browserTarget": "mhbp-angular:build"
           },
           "configurations": {
             "development": {
             },
             "production": {
-              "browserTarget": "metaheuristic-app:build:production"
+              "browserTarget": "mhbp-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "metaheuristic-app:build"
+            "browserTarget": "mhbp-angular:build"
           }
         },
         "lint": {
@@ -130,7 +130,7 @@
         }
       }
     },
-    "metaheuristic-app-e2e": {
+    "mhbp-angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -139,13 +139,13 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "metaheuristic-app:serve"
+            "devServerTarget": "mhbp-angular:serve"
           },
           "configurations": {
             "development": {
             },
             "production": {
-              "devServerTarget": "metaheuristic-app:serve:production"
+              "devServerTarget": "mhbp-angular:serve:production"
             }
           }
         },
@@ -161,5 +161,5 @@
       }
     }
   },
-  "defaultProject": "metaheuristic-app"
+  "defaultProject": "mhbp-angular"
 }

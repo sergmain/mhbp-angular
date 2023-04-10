@@ -19,7 +19,7 @@ module.exports = function (config) {
       }
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, '../coverage/metaheuristic-app'),
+      dir: require('path').join(__dirname, '../coverage/mhbp-angular'),
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },

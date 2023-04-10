@@ -6,6 +6,7 @@ import { EvaluationService } from '@src/app/services/evaluation/evaluation.servi
 import { SimpleEvaluationsResult } from '@src/app/services/evaluation/SimpleEvaluationsResult';
 import { SimpleEvaluation } from '@src/app/services/evaluation/SimpleEvaluation';
 import {SimpleAccount} from "@services/accounts";
+import {ConfirmationDialogMethod} from "@app/components/app-dialog-confirmation/app-dialog-confirmation.component";
 
 @Component({
   selector: 'evaluations',
@@ -29,10 +30,10 @@ export class EvaluationsComponent extends UIStateComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('evaluations.component.ts.ngOnInit()');
-    this.updateTable(0);
+    this.getEvaluations(0);
   }
 
-  updateTable(pageNumber: number): void {
+  getEvaluations(pageNumber: number): void {
     this.setIsLoadingStart();
     this.evaluationService
         .getEvaluations(pageNumber.toString())
@@ -49,12 +50,26 @@ export class EvaluationsComponent extends UIStateComponent implements OnInit {
         });
   }
 
+  @ConfirmationDialogMethod({
+    question: (evaluation: SimpleEvaluation): string =>
+        `Do you want to delete SimpleEvaluation\xa0#${evaluation.sessionId}`,
+
+    rejectTitle: 'Cancel',
+    resolveTitle: 'Delete'
+  })
+
+  delete(evaluation: SimpleEvaluation): void {
+    this.evaluationService
+        .evaluationDeleteCommit(evaluation.sessionId.toString())
+        .subscribe(v => this.getEvaluations(this.simpleEvaluationsResult.evaluations.number));
+  }
+
 
   prevPage(): void {
-    this.updateTable((this.simpleEvaluationsResult.evaluations.number - 1));
+    this.getEvaluations((this.simpleEvaluationsResult.evaluations.number - 1));
   }
 
   nextPage(): void {
-    this.updateTable((this.simpleEvaluationsResult.evaluations.number + 1));
+    this.getEvaluations((this.simpleEvaluationsResult.evaluations.number + 1));
   }
 }

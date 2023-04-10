@@ -56,15 +56,18 @@
             </ng-container>
             <ng-container matColumnDef="normalPercent">
                 <th mat-header-cell *matHeaderCellDef>{{ 'evaluation.WithoutError' | translate }}</th>
-                <td mat-cell="mat-cell" *matCellDef="let el">{{el.normalPercent.toLocaleString("en", {style: "percent"})}} </td>
+                <td mat-cell="mat-cell" *matCellDef="let el">
+                    {{el.finishedOn==null ? '' : el.normalPercent.toLocaleString("en", {style: "percent"})}} </td>
             </ng-container>
             <ng-container matColumnDef="failPercent">
                 <th mat-header-cell *matHeaderCellDef>{{ 'evaluation.WithError' | translate }}</th>
-                <td mat-cell="mat-cell" *matCellDef="let el">{{el.failPercent.toLocaleString("en", {style: "percent"})}} </td>
+                <td mat-cell="mat-cell" *matCellDef="let el">
+                    {{el.finishedOn==null ? '' : el.failPercent.toLocaleString("en", {style: "percent"})}} </td>
             </ng-container>
             <ng-container matColumnDef="errorPercent">
                 <th mat-header-cell *matHeaderCellDef>{{ 'evaluation.SystemError' | translate }}</th>
-                <td mat-cell="mat-cell" *matCellDef="let el">{{el.errorPercent.toLocaleString("en", {style: "percent"})}} </td>
+                <td mat-cell="mat-cell" *matCellDef="let el">
+                    {{el.finishedOn==null ? '' : el.errorPercent.toLocaleString("en", {style: "percent"})}} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
             <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
