@@ -62,17 +62,8 @@ export class EvaluationsComponent extends UIStateComponent implements OnInit {
   delete(evaluation: SimpleEvaluation): void {
     this.evaluationService
         .evaluationDeleteCommit(evaluation.sessionId.toString())
-        // .subscribe();
         .subscribe(v => this.getEvaluations(this.simpleEvaluationsResult.evaluations.number));
   }
-/*
-  delete(evaluation: SimpleEvaluation): void {
-    this.evaluationService
-        .deleteCommit(sourceCode.id.toString())
-        .subscribe();
-  }
-*/
-
 
   prevPage(): void {
     this.getEvaluations((this.simpleEvaluationsResult.evaluations.number - 1));
