@@ -6,7 +6,8 @@ import { EvaluationService } from '@src/app/services/evaluation/evaluation.servi
 import { SimpleEvaluationsResult } from '@src/app/services/evaluation/SimpleEvaluationsResult';
 import { SimpleEvaluation } from '@src/app/services/evaluation/SimpleEvaluation';
 import {SimpleAccount} from "@services/accounts";
-import {ConfirmationDialogMethod} from "@app/components/app-dialog-confirmation/app-dialog-confirmation.component";
+import {ConfirmationDialogMethod} from "@src/app/components/app-dialog-confirmation/app-dialog-confirmation.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'evaluations',
@@ -17,11 +18,12 @@ export class EvaluationsComponent extends UIStateComponent implements OnInit {
 //   columnsToDisplay: string[] = ['sessionId', 'startedOn', 'finishedOn',
 //     'sessionStatus', 'safe', 'normalPercent', 'failPercent', 'errorPercent', 'providerCode', 'modelInfo'];
   columnsToDisplay: string[] = ['sessionId', 'startedOn', 'providerCode',
-    'normalPercent', 'failPercent', 'errorPercent'];
+    'normalPercent', 'failPercent', 'errorPercent', 'bts'];
   simpleEvaluationsResult: SimpleEvaluationsResult;
   dataSource = new MatTableDataSource<SimpleEvaluation>([]);
 
   constructor(
+      readonly dialog: MatDialog,
       readonly authenticationService: AuthenticationService,
       private evaluationService: EvaluationService,
   ) {
@@ -57,12 +59,19 @@ export class EvaluationsComponent extends UIStateComponent implements OnInit {
     rejectTitle: 'Cancel',
     resolveTitle: 'Delete'
   })
-
   delete(evaluation: SimpleEvaluation): void {
     this.evaluationService
         .evaluationDeleteCommit(evaluation.sessionId.toString())
+        // .subscribe();
         .subscribe(v => this.getEvaluations(this.simpleEvaluationsResult.evaluations.number));
   }
+/*
+  delete(evaluation: SimpleEvaluation): void {
+    this.evaluationService
+        .deleteCommit(sourceCode.id.toString())
+        .subscribe();
+  }
+*/
 
 
   prevPage(): void {

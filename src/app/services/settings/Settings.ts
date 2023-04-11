@@ -20,7 +20,7 @@ export interface Settings {
 
 export const setOfLanguages: Set < SettingsLanguage > = new Set([
     SettingsLanguage.EN,
-    SettingsLanguage.RU,
+    // SettingsLanguage.RU,
 ]);
 
 export const defaultSettings: Settings = {

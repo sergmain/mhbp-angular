@@ -22,10 +22,8 @@ export class EvaluationService {
     }
 
     evaluationDeleteCommit(evaluationId: string): Observable<OperationStatusRest> {
-        return this.http.post<OperationStatusRest>(
-            url(`evaluation-delete-commit/`),
-            generateFormData({ evaluationId })
-        );
+        console.log("Delete evaluetion #"+ evaluationId);
+        return this.http.post<OperationStatusRest>(url(`evaluation-delete-commit`), generateFormData({ evaluationId }));
     }
 
 
