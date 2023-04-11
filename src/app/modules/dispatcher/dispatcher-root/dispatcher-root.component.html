@@ -16,6 +16,19 @@
             </button>
 
             <button *ngIf="
+                    isRole.MainAssetManager ||
+                    isRole.Admin ||
+                    isRole.Data ||
+                    isRole.Operator ||
+                    isRole.Manager
+                "
+                mat-button
+                routerLinkActive="active"
+                routerLink="/dispatcher/api">
+                    {{ 'dispatcher.Apis' | translate }}
+            </button>
+
+            <button *ngIf="
                     isRole.Admin || 
                     isRole.Data
                 " 

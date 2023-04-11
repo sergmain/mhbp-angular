@@ -44,6 +44,7 @@
 	"batch.onlyMyBatches": "Only My Batches",
 	"ctBackButton.back": "Back",
 	"dispatcher.Evaluations": "Evaluations",
+	"dispatcher.Apis": "APIs",
 	"dispatcher.Accounts": "Accounts",
 	"dispatcher.Company": "Company",
 	"dispatcher.Functions": "Functions",

@@ -23,7 +23,7 @@ export class ApiService {
 
     apiDeleteCommit(apiId: string): Observable<OperationStatusRest> {
         console.log("Delete API scheme #"+ apiId);
-        return this.http.post<OperationStatusRest>(url(`api-delete-commit`), generateFormData({ apiId }));
+        return this.http.post<OperationStatusRest>(url(`api-delete-commit`), generateFormData({ id: apiId }));
     }
 
 

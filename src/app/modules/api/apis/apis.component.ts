@@ -11,7 +11,7 @@ import {ApiService} from "@services/api/api.service";
 @Component({
   selector: 'apis',
   templateUrl: './apis.component.html',
-  styleUrls: ['./apis.component.sass']
+  styleUrls: ['./apis.component.scss']
 })
 export class ApisComponent extends UIStateComponent implements OnInit {
   columnsToDisplay: string[] = ['id', 'name', 'code', 'bts'];

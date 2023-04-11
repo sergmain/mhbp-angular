@@ -44,6 +44,7 @@
 	"batch.onlyMyBatches": "Только мои пакеты",
 	"ctBackButton.back": "Назад",
 	"dispatcher.Evaluations": "Evaluations",
+	"dispatcher.Apis": "APIs",
 	"dispatcher.Accounts": "Аккаунты",
 	"dispatcher.Company": "Компания",
 	"dispatcher.Functions": "Функции",
