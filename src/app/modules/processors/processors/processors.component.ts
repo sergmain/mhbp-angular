@@ -11,7 +11,7 @@ import { AuthenticationService } from '@src/app/services/authentication';
 
 
 @Component({
-    selector: 'app-processors',
+    selector: 'processors',
     templateUrl: './processors.component.html',
     styleUrls: ['./processors.component.scss']
 })

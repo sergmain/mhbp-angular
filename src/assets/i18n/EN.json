@@ -52,6 +52,9 @@
 	"dispatcher.SourceCodes": "Source Codes",
 	"dispatcher.Variables": "Variables",
 
+	"api.name": "API name",
+	"api.code": "API code",
+
 	"evaluation.StartedOn": "Started on",
 	"evaluation.FinishedOn": "Finished on",
 	"evaluation.ProviderCode": "Provider code",

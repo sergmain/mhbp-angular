@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { UIStateComponent } from '@src/app/models/UIStateComponent';
 import { AuthenticationService } from '@src/app/services/authentication';
-import {ConfirmationDialogMethod} from "@src/app/components/app-dialog-confirmation/app-dialog-confirmation.component";
+import {ConfirmationDialogInterface, ConfirmationDialogMethod} from "@src/app/components/app-dialog-confirmation/app-dialog-confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
 import {SimpleApisResult} from "@services/api/SimpleApisResult";
 import {SimpleApi} from "@services/api/SimpleApi";
@@ -13,9 +13,10 @@ import {ApiService} from "@services/api/api.service";
   templateUrl: './apis.component.html',
   styleUrls: ['./apis.component.scss']
 })
-export class ApisComponent extends UIStateComponent implements OnInit {
+export class ApisComponent extends UIStateComponent implements OnInit, ConfirmationDialogInterface {
   columnsToDisplay: string[] = ['id', 'name', 'code', 'bts'];
-  secondColumnsToDisplay: string[] = ['empty', 'params', 'scheme'];
+  // secondColumnsToDisplay: string[] = ['empty', 'params', 'scheme'];
+  secondColumnsToDisplay: string[] = ['empty', 'scheme'];
   simpleApisResult: SimpleApisResult;
   dataSource = new MatTableDataSource<SimpleApi>([]);
   expandParams: boolean = false;
