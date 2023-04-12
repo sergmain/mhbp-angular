@@ -7,12 +7,28 @@ import { MaterialAppModule } from '@src/app/ngmaterial.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {ApisComponent} from './apis/apis.component';
+import {ApiParamsEditComponent} from "@app/modules/api/api-params-edit/api-params-edit.component";
+import {ApiAddComponent} from "@app/modules/api/api-params-add/api-add.component";
 
 export const ApiRoutes: Routes = [
     {
         path: '',
         component: ApisComponent
-    }
+    },
+    {
+        path: 'add',
+        component: ApiAddComponent,
+        data: {
+            backConfig: ['../']
+        }
+    },
+    {
+        path: 'params-edit',
+        component: ApiParamsEditComponent,
+        data: {
+            backConfig: ['../']
+        }
+    },
 ];
 
 
@@ -35,7 +51,7 @@ export class ApiRoutingModule { }
         TranslateModule.forChild({})
     ],
     declarations: [
-        ApisComponent
+        ApisComponent, ApiAddComponent, ApiParamsEditComponent
     ]
 })
 export class ApiModule { }

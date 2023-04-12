@@ -51,7 +51,6 @@ export class ApisComponent extends UIStateComponent implements OnInit, Confirmat
         });
   }
 
-
   @ConfirmationDialogMethod({
     question: (api: SimpleApi): string =>
         `Do you want to delete API #${api.id}`,

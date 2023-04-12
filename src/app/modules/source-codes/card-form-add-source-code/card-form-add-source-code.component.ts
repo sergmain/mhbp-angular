@@ -12,8 +12,7 @@ import { MatButton } from '@angular/material/button';
 export class CardFormAddSourceCodeComponent {
     @ViewChild(MatButton) button: MatButton;
     @Output() responseChange: EventEmitter<SourceCodeResult> = new EventEmitter<SourceCodeResult>();
-    @Output() abort: EventEmitter<void> = new EventEmitter<void>();
-
+    @Output() cancelEmitter: EventEmitter<void> = new EventEmitter<void>();
 
     form: FormGroup = new FormGroup({
         source: new FormControl('', [
@@ -27,7 +26,7 @@ export class CardFormAddSourceCodeComponent {
     ) { }
 
     cancel(): void {
-        this.abort.emit();
+        this.cancelEmitter.emit();
     }
 
     create(): void {

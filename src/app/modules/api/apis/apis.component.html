@@ -11,6 +11,24 @@
                     Expand params and scheme
                 </mat-slide-toggle>
             </app-ct-flex-item>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <button mat-flat-button="mat-flat-button" color="primary" routerLink="add">Add API</button>
+                </app-ct-flex-item>
+            </app-ct-flex>
+        </app-ct-section-header-row>
+
+        <app-ct-section-header-row>
+            <app-ct-flex justify-content="space-between">
+                <app-ct-flex-item>
+                    <app-ct-heading>APIs</app-ct-heading>
+                </app-ct-flex-item>
+            </app-ct-flex>
+            <app-ct-flex-item>
+                <mat-slide-toggle [(ngModel)]="expandParams">
+                    Expand params and scheme
+                </mat-slide-toggle>
+            </app-ct-flex-item>
         </app-ct-section-header-row>
     </app-ct-section-header>
     <app-ct-section-body>
