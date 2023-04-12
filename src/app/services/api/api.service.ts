@@ -26,5 +26,8 @@ export class ApiService {
         return this.http.post<OperationStatusRest>(url(`api-delete-commit`), generateFormData({ id: apiId }));
     }
 
-
+    runEvaluation(apiId: string) {
+        console.log("Run evaluation for API scheme #"+ apiId);
+        return this.http.post<OperationStatusRest>(url(`run-evaluation`), generateFormData({ id: apiId }));
+    }
 }

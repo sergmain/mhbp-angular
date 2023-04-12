@@ -15,8 +15,8 @@ import {ApiService} from "@services/api/api.service";
 })
 export class ApisComponent extends UIStateComponent implements OnInit, ConfirmationDialogInterface {
   columnsToDisplay: string[] = ['id', 'name', 'code', 'bts'];
-  // secondColumnsToDisplay: string[] = ['empty', 'params', 'scheme'];
-  secondColumnsToDisplay: string[] = ['empty', 'scheme'];
+  secondColumnsToDisplay: string[] = ['empty', 'params', 'scheme'];
+  // secondColumnsToDisplay: string[] = ['empty', 'scheme', 'bts-params'];
   simpleApisResult: SimpleApisResult;
   dataSource = new MatTableDataSource<SimpleApi>([]);
   expandParams: boolean = false;
@@ -51,18 +51,32 @@ export class ApisComponent extends UIStateComponent implements OnInit, Confirmat
         });
   }
 
+
   @ConfirmationDialogMethod({
     question: (api: SimpleApi): string =>
-        `Do you want to delete SimpleApi\xa0#${api.id}`,
+        `Do you want to delete API #${api.id}`,
 
-    rejectTitle: 'Cancel',
-    resolveTitle: 'Delete'
+    resolveTitle: 'Delete',
+    rejectTitle: 'Cancel'
   })
   delete(api: SimpleApi): void {
     this.apiService
         .apiDeleteCommit(api.id.toString())
         .subscribe(v => this.getApis(this.simpleApisResult.apis.number));
   }
+
+  @ConfirmationDialogMethod({
+    question: (api: SimpleApi): string => `Do you want to run an evaluation #${api.id}`,
+
+    resolveTitle: 'Run',
+    rejectTitle: 'Cancel'
+  })
+  runEvaluation(api: SimpleApi): void {
+    this.apiService
+        .runEvaluation(api.id.toString())
+        .subscribe(v => this.getApis(this.simpleApisResult.apis.number));
+  }
+
 
   prevPage(): void {
     this.getApis((this.simpleApisResult.apis.number - 1));

@@ -7,6 +7,9 @@
 
 @include mat.core();
 
+// https://stackoverflow.com/questions/75385611/module-warning-angular-material-themes-should-be-created-from-a-map-containing-t
+// https://material.angular.io/guide/theming#applying-a-theme-to-components
+
 .light-theme {
     $primary: mat-palette($mat-light);
     $accent: mat-palette($mat-light, A200, A100, A400);
