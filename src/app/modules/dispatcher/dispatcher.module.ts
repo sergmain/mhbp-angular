@@ -98,6 +98,16 @@ export const DispatcherRoutes: Routes = [
         }
     },
     {
+        path: 'auth',
+        canActivate: [RoleRouteGuard],
+        component: DispatcherRootComponent,
+        loadChildren: () => import('src/app/modules/auth/auth.module').then(m => m.AuthModule),
+        data: {
+            requiredRoles: [Role.MainAdmin, Role.MainOperator, Role.MainSupport, Role.Manager],
+            section: 'auths'
+        }
+    },
+    {
         path: 'api',
         canActivate: [RoleRouteGuard],
         component: DispatcherRootComponent,

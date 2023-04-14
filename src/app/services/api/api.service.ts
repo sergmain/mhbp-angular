@@ -5,8 +5,6 @@ import {Observable} from 'rxjs';
 import {SimpleApisResult} from './SimpleApisResult';
 import {OperationStatusRest} from "@app/models/OperationStatusRest";
 import {generateFormData} from "@app/helpers/generateFormData";
-import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
-import {AccountResult} from "@services/accounts";
 import {SimpleApiResult} from "@services/api/SimpleApiResult";
 
 
@@ -38,11 +36,11 @@ export class ApiService {
         return this.http.post<OperationStatusRest>(url(`run-evaluation`), generateFormData({ id: apiId }));
     }
 
-    addFormCommit(name: string, code: string, params: string, scheme: string): Observable<OperationStatusRest> {
+    addFormCommit(name: string, code: string, scheme: string): Observable<OperationStatusRest> {
         return this.http.post<OperationStatusRest>(
             url(`api-add-commit`),
             generateFormData({
-                name, code, params, scheme
+                name, code, scheme
             })
         );
     }

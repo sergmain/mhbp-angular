@@ -10,20 +10,14 @@
       <app-ct-section-body>
         <form [formGroup]="form" novalidate="novalidate">
           <mat-form-field appearance="outline" style="width: 100%;">
-            <mat-label>Name</mat-label>
-            <input matInput="matInput" type="text" autocomplete="name" formControlName="name" />
-            <mat-hint>This is a required field.</mat-hint>
-          </mat-form-field>
-          <br>
-          <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Code</mat-label>
             <input matInput="matInput" type="text" autocomplete="code" formControlName="code" />
             <mat-hint>This is a required field.</mat-hint>
           </mat-form-field>
           <br>
           <mat-form-field appearance="outline" style="width: 100%;">
-            <mat-label>API scheme</mat-label>
-            <textarea formControlName="scheme" matInput="matInput" cdkTextareaAutosize="cdkTextareaAutosize"
+            <mat-label>Auth parameters</mat-label>
+            <textarea formControlName="params" matInput="matInput" cdkTextareaAutosize="cdkTextareaAutosize"
                       cdkAutosizeMinRows="10" value="" autocomplete="off"></textarea>
             <mat-hint>This is a required field.</mat-hint>
           </mat-form-field>

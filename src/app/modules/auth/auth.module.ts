@@ -6,17 +6,25 @@ import { CtModule } from '../ct/ct.module';
 import { MaterialAppModule } from '@src/app/ngmaterial.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {ApisComponent} from './apis/apis.component';
-import {ApiAddComponent} from "@app/modules/api/api-params-add/api-add.component";
+import {AuthsComponent} from './auths/auths.component';
+import {AuthEditComponent} from "@app/modules/auth/auth-edit/auth-edit.component";
+import {AuthAddComponent} from "@app/modules/auth/auth-add/auth-add.component";
 
-export const ApiRoutes: Routes = [
+export const AuthRoutes: Routes = [
     {
         path: '',
-        component: ApisComponent
+        component: AuthsComponent
     },
     {
         path: 'add',
-        component: ApiAddComponent,
+        component: AuthAddComponent,
+        data: {
+            backConfig: ['../']
+        }
+    },
+    {
+        path: 'params-edit',
+        component: AuthEditComponent,
         data: {
             backConfig: ['../']
         }
@@ -25,17 +33,17 @@ export const ApiRoutes: Routes = [
 
 
 @NgModule({
-    imports: [RouterModule.forChild(ApiRoutes)],
+    imports: [RouterModule.forChild(AuthRoutes)],
     exports: [RouterModule],
     declarations: []
 })
-export class ApiRoutingModule { }
+export class AuthRoutingModule { }
 
 
 @NgModule({
     imports: [
         CommonModule,
-        ApiRoutingModule,
+        AuthRoutingModule,
         CtModule,
         MaterialAppModule,
         FormsModule,
@@ -43,7 +51,7 @@ export class ApiRoutingModule { }
         TranslateModule.forChild({})
     ],
     declarations: [
-        ApisComponent, ApiAddComponent
+        AuthsComponent, AuthAddComponent, AuthEditComponent
     ]
 })
-export class ApiModule { }
+export class AuthModule { }

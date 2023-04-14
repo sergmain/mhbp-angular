@@ -2,25 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadStates } from '@app/enums/LoadStates';
-import {SimpleApi} from "@services/api/SimpleApi";
-import {ApiService} from "@services/api/api.service";
+import {SimpleAuth} from "@services/auth/SimpleAuth";
+import {AuthService} from "@services/auth/auth.service";
 
 @Component({
-    selector: 'api-params-edit',
-    templateUrl: './api-params-edit.component.html',
-    styleUrls: ['./api-params-edit.component.scss']
+    selector: 'auth-edit',
+    templateUrl: './auth-edit.component.html',
+    styleUrls: ['./auth-edit.component.scss']
 })
 
-export class ApiParamsEditComponent implements OnInit {
+export class AuthEditComponent implements OnInit {
     readonly states = LoadStates;
     currentStates = new Set();
     response;
-    api: SimpleApi;
+    api: SimpleAuth;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private apiService: ApiService,
+        private authService: AuthService,
         private location: Location
     ) { }
 
@@ -31,11 +31,11 @@ export class ApiParamsEditComponent implements OnInit {
 
     getApi(): void {
         const id = this.route.snapshot.paramMap.get('id');
-        this.apiService
-            .getApi(id)
+        this.authService
+            .getAuth(id)
             .subscribe(
                 (response) => {
-                    this.api = response.api;
+                    this.api = response.auth;
                 },
                 () => { },
                 () => {
@@ -50,11 +50,11 @@ export class ApiParamsEditComponent implements OnInit {
 
     save() {
         this.currentStates.add(this.states.wait);
-        this.apiService
+        this.authService
             .editFormCommit(this.api.id.toString(), this.api.params)
             .subscribe(
                 (response) => {
-                    this.router.navigate(['/dispatcher', 'accounts']);
+                    this.router.navigate(['/dispatcher', 'auths']);
                 },
                 () => { },
                 () => {
