@@ -38,11 +38,11 @@ export class AuthsComponent extends UIStateComponent implements OnInit, Confirma
     this.authService
         .getAuths(pageNumber.toString())
         .subscribe({
-          next: simpleApisResult => {
-            this.simpleAuthsResult = simpleApisResult;
-            // console.log('ApisComponent.simpleApisResult: ' + JSON.stringify(this.simpleApisResult));
+          next: simpleAuthsResult => {
+            this.simpleAuthsResult = simpleAuthsResult;
+            console.log('ApisComponent.simpleAuthsResult: ' + JSON.stringify(this.simpleAuthsResult));
             this.dataSource = new MatTableDataSource(this.simpleAuthsResult.auths.content || []);
-            // console.log('ApisComponent.simpleApisResult: #3');
+            console.log('ApisComponent.simpleAuthsResult: #3');
           },
           complete: () => {
             this.setIsLoadingEnd();

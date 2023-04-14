@@ -22,7 +22,6 @@ export class ApiAddComponent {
     form = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.minLength(3)]),
         code: new FormControl('', [Validators.required, Validators.minLength(3)]),
-        params: new FormControl('', [Validators.required, Validators.minLength(3)]),
         scheme: new FormControl('', [Validators.required, Validators.minLength(3)]),
     });
 

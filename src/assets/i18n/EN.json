@@ -45,6 +45,7 @@
 	"ctBackButton.back": "Back",
 	"dispatcher.Evaluations": "Evaluations",
 	"dispatcher.Apis": "APIs",
+	"dispatcher.Auths": "Auth",
 	"dispatcher.Accounts": "Accounts",
 	"dispatcher.Company": "Company",
 	"dispatcher.Functions": "Functions",

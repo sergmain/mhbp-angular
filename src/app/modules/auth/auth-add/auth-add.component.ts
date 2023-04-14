@@ -21,7 +21,6 @@ export class AuthAddComponent {
     currentStates = new Set();
     response: DefaultResponse;
     form = new FormGroup({
-        name: new FormControl('', [Validators.required, Validators.minLength(3)]),
         code: new FormControl('', [Validators.required, Validators.minLength(3)]),
         params: new FormControl('', [Validators.required, Validators.minLength(3)])
     });
@@ -45,7 +44,6 @@ export class AuthAddComponent {
         this.currentStates.add(this.states.wait);
         const subscribe: Subscription = this.authService
             .addFormCommit(
-                this.form.value.name,
                 this.form.value.code,
                 this.form.value.params
             )

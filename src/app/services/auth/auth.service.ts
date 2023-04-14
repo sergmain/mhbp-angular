@@ -32,11 +32,11 @@ export class AuthService {
         return this.http.post<OperationStatusRest>(url(`auth-delete-commit`), generateFormData({ id: apiId }));
     }
 
-    addFormCommit(name: string, code: string, params: string): Observable<OperationStatusRest> {
+    addFormCommit(code: string, params: string): Observable<OperationStatusRest> {
         return this.http.post<OperationStatusRest>(
             url(`auth-add-commit`),
             generateFormData({
-                name, code, params
+                code, params
             })
         );
     }
