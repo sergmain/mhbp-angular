@@ -23,7 +23,7 @@ export class SessionService {
 
     sessionDeleteCommit(sessionId: string): Observable<OperationStatusRest> {
         console.log("Delete session #"+ sessionId);
-        return this.http.post<OperationStatusRest>(url(`session-delete-commit`), generateFormData({ sessionId: sessionId }));
+        return this.http.post<OperationStatusRest>(url(`session-delete-commit`), generateFormData({ kbId: sessionId }));
     }
 
 

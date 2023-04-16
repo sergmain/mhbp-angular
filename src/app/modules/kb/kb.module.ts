@@ -6,17 +6,25 @@ import { CtModule } from '../ct/ct.module';
 import { MaterialAppModule } from '@src/app/ngmaterial.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {ApisComponent} from './apis/apis.component';
-import {ApiAddComponent} from "@app/modules/api/api-add/api-add.component";
+import {KbsComponent} from './kbs/kbs.component';
+import {KbEditComponent} from "@app/modules/kb/kb-edit/kb-edit.component";
+import {KbAddComponent} from "@app/modules/kb/kb-add/kb-add.component";
 
-export const ApiRoutes: Routes = [
+export const KbRoutes: Routes = [
     {
         path: '',
-        component: ApisComponent
+        component: KbsComponent
     },
     {
         path: 'add',
-        component: ApiAddComponent,
+        component: KbAddComponent,
+        data: {
+            backConfig: ['../']
+        }
+    },
+    {
+        path: 'params-edit',
+        component: KbEditComponent,
         data: {
             backConfig: ['../']
         }
@@ -25,17 +33,17 @@ export const ApiRoutes: Routes = [
 
 
 @NgModule({
-    imports: [RouterModule.forChild(ApiRoutes)],
+    imports: [RouterModule.forChild(KbRoutes)],
     exports: [RouterModule],
     declarations: []
 })
-export class ApiRoutingModule { }
+export class KbRoutingModule { }
 
 
 @NgModule({
     imports: [
         CommonModule,
-        ApiRoutingModule,
+        KbRoutingModule,
         CtModule,
         MaterialAppModule,
         FormsModule,
@@ -43,7 +51,7 @@ export class ApiRoutingModule { }
         TranslateModule.forChild({})
     ],
     declarations: [
-        ApisComponent, ApiAddComponent
+        KbsComponent, KbAddComponent, KbEditComponent
     ]
 })
-export class ApiModule { }
+export class KbModule { }

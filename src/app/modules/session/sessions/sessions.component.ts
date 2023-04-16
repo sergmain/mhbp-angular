@@ -53,14 +53,14 @@ export class SessionsComponent extends UIStateComponent implements OnInit {
 
   @ConfirmationDialogMethod({
     question: (session: SimpleSession): string =>
-        `Do you want to delete SimpleEvaluation\xa0#${session.sessionId}`,
+        `Do you want to delete SimpleEvaluation\xa0#${session.kbId}`,
 
     rejectTitle: 'Cancel',
     resolveTitle: 'Delete'
   })
   delete(session: SimpleSession): void {
     this.sessionService
-        .sessionDeleteCommit(session.sessionId.toString())
+        .sessionDeleteCommit(session.kbId.toString())
         .subscribe(v => this.getEvaluations(this.simpleSessionsResult.sessions.number));
   }
 

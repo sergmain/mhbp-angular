@@ -3,7 +3,7 @@
         <app-ct-section>
             <app-ct-section-header>
                 <app-ct-section-header-row>
-                    <app-ct-heading>Edit params for API  {{auth ? auth.id : ''}} ({{auth ? auth.code : ''}})
+                    <app-ct-heading>Edit params for API  {{api ? api.id : ''}} ({{api ? api.code : ''}})
                     </app-ct-heading>
                 </app-ct-section-header-row>
             </app-ct-section-header>
@@ -12,7 +12,7 @@
                     <app-ct-section-content>
                         <mat-form-field appearance="outline">
                             <mat-label>Params</mat-label>
-                            <input matInput="matInput" [(ngModel)]="auth.params" />
+                            <input matInput="matInput" [(ngModel)]="api.params" />
                         </mat-form-field>
                     </app-ct-section-content>
                 </app-ct-section-body-row>

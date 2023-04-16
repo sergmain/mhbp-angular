@@ -6,16 +6,15 @@ import { DefaultResponse } from '@app/models/DefaultResponse';
 import { OperationStatus } from '@src/app/enums/OperationStatus';
 import { Subscription } from 'rxjs';
 import {MatButton} from "@angular/material/button";
-// import {SourceCodeResult} from "@services/source-codes/SourceCodeResult";
-import {AuthService} from "@services/auth/auth.service";
+import {KbService} from "@services/kb/kb.service";
 
 @Component({
-    selector: 'auth-add',
-    templateUrl: './auth-add.component.html',
-    styleUrls: ['./auth-add.component.scss']
+    selector: 'kb-add',
+    templateUrl: './kb-add.component.html',
+    styleUrls: ['./kb-add.component.scss']
 })
 
-export class AuthAddComponent {
+export class KbAddComponent {
     readonly states = LoadStates;
     currentStates = new Set();
     response: DefaultResponse;
@@ -25,13 +24,12 @@ export class AuthAddComponent {
     });
 
     constructor(
-        private authService: AuthService,
+        private kbService: KbService,
         private router: Router,
         private activatedRoute: ActivatedRoute
     ) { }
 
     @ViewChild(MatButton) button: MatButton;
-    // @Output() responseChange: EventEmitter<SourceCodeResult> = new EventEmitter<SourceCodeResult>();
     @Output() cancelEmitter: EventEmitter<void> = new EventEmitter<void>();
 
     cancel(): void {
@@ -41,7 +39,7 @@ export class AuthAddComponent {
     create(): void {
         this.button.disabled = true;
         this.currentStates.add(this.states.wait);
-        const subscribe: Subscription = this.authService
+        const subscribe: Subscription = this.kbService
             .addFormCommit(
                 this.form.value.code,
                 this.form.value.params
@@ -49,7 +47,7 @@ export class AuthAddComponent {
             .subscribe(
                 (response) => {
                     if (response.status === OperationStatus.OK) {
-                        this.router.navigate(['../', 'auths'], { relativeTo: this.activatedRoute });
+                        this.router.navigate(['../', 'kbs'], { relativeTo: this.activatedRoute });
                     }
                 },
                 () => {},

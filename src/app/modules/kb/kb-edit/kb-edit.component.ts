@@ -2,25 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadStates } from '@app/enums/LoadStates';
-import {SimpleAuth} from "@services/auth/SimpleAuth";
-import {AuthService} from "@services/auth/auth.service";
+import {SimpleKb} from "@services/kb/SimpleKb";
+import {KbService} from "@services/kb/kb.service";
 
 @Component({
-    selector: 'auth-edit',
-    templateUrl: './auth-edit.component.html',
-    styleUrls: ['./auth-edit.component.scss']
+    selector: 'kb-edit',
+    templateUrl: './kb-edit.component.html',
+    styleUrls: ['./kb-edit.component.scss']
 })
 
-export class AuthEditComponent implements OnInit {
+export class KbEditComponent implements OnInit {
     readonly states = LoadStates;
     currentStates = new Set();
     response;
-    auth: SimpleAuth;
+    kb: SimpleKb;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private authService: AuthService,
+        private kbService: KbService,
         private location: Location
     ) { }
 
@@ -31,11 +31,11 @@ export class AuthEditComponent implements OnInit {
 
     getApi(): void {
         const id = this.route.snapshot.paramMap.get('id');
-        this.authService
-            .getAuth(id)
+        this.kbService
+            .getKb(id)
             .subscribe(
                 (response) => {
-                    this.auth = response.auth;
+                    this.kb = response.kb;
                 },
                 () => { },
                 () => {
@@ -50,11 +50,11 @@ export class AuthEditComponent implements OnInit {
 
     save() {
         this.currentStates.add(this.states.wait);
-        this.authService
-            .editFormCommit(this.auth.id.toString(), this.auth.params)
+        this.kbService
+            .editFormCommit(this.kb.id.toString(), this.kb.params)
             .subscribe(
                 (response) => {
-                    this.router.navigate(['/dispatcher', 'auths']);
+                    this.router.navigate(['/dispatcher', 'kbs']);
                 },
                 () => { },
                 () => {
