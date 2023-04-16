@@ -46,6 +46,8 @@
 	"dispatcher.Sessions": "Sessions",
 	"dispatcher.Apis": "APIs",
 	"dispatcher.Auths": "Auth",
+	"dispatcher.Kbs": "KB",
+	"dispatcher.Eval": "Evaluation",
 	"dispatcher.Accounts": "Accounts",
 	"dispatcher.Company": "Company",
 	"dispatcher.Functions": "Functions",

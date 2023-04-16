@@ -3,7 +3,7 @@
         <app-ct-section-header-row>
             <app-ct-flex justify-content="space-between">
                 <app-ct-flex-item>
-                    <app-ct-heading>APIs</app-ct-heading>
+                    <app-ct-heading>Knowledge Bases</app-ct-heading>
                 </app-ct-flex-item>
             </app-ct-flex>
             <app-ct-flex-item>
@@ -49,7 +49,7 @@
                 <td mat-cell="mat-cell" *matCellDef="let el">{{el.id}} </td>
             </ng-container>
             <ng-container matColumnDef="code">
-                <th mat-header-cell *matHeaderCellDef>{{ 'api.code' | translate }}</th>
+                <th mat-header-cell *matHeaderCellDef>{{ 'kb.code' | translate }}</th>
                 <td mat-cell="mat-cell" *matCellDef="let el">{{el.code}} </td>
             </ng-container>
             <ng-container matColumnDef="empty">
@@ -62,7 +62,7 @@
                     <app-ct-flex justify-content="flex-start" gap="8px">
                         <app-ct-flex-item>
                             <button mat-flat-button size="forTableRow"
-                                    [routerLink]="['/dispatcher/api/edit/',el.id]" color="primary">
+                                    [routerLink]="['/dispatcher/kb/edit/',el.id]" color="primary">
                                 Edit</button>
                         </app-ct-flex-item>
                     </app-ct-flex>

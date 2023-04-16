@@ -108,6 +108,16 @@ export const DispatcherRoutes: Routes = [
         }
     },
     {
+        path: 'kb',
+        canActivate: [RoleRouteGuard],
+        component: DispatcherRootComponent,
+        loadChildren: () => import('src/app/modules/kb/kb.module').then(m => m.KbModule),
+        data: {
+            requiredRoles: [Role.MainAdmin, Role.MainOperator, Role.MainSupport, Role.Manager],
+            section: 'kbs'
+        }
+    },
+    {
         path: 'auth',
         canActivate: [RoleRouteGuard],
         component: DispatcherRootComponent,

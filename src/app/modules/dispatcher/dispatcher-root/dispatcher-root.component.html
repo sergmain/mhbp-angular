@@ -22,6 +22,32 @@
                     isRole.Operator ||
                     isRole.Manager
                 "
+                    mat-button
+                    routerLinkActive="active"
+                    routerLink="/dispatcher/evaluation">
+                {{ 'dispatcher.Eval' | translate }}
+            </button>
+
+            <button *ngIf="
+                    isRole.MainAssetManager ||
+                    isRole.Admin ||
+                    isRole.Data ||
+                    isRole.Operator ||
+                    isRole.Manager
+                "
+                    mat-button
+                    routerLinkActive="active"
+                    routerLink="/dispatcher/kb">
+                {{ 'dispatcher.Kbs' | translate }}
+            </button>
+
+            <button *ngIf="
+                    isRole.MainAssetManager ||
+                    isRole.Admin ||
+                    isRole.Data ||
+                    isRole.Operator ||
+                    isRole.Manager
+                "
                 mat-button
                 routerLinkActive="active"
                 routerLink="/dispatcher/api">
