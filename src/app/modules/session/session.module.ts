@@ -6,28 +6,28 @@ import { CtModule } from '../ct/ct.module';
 import { MaterialAppModule } from '@src/app/ngmaterial.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { EvaluationsComponent } from './evaluations/evaluations.component';
+import { SessionsComponent } from './sessions/sessions.component';
 
-export const EvaluationRoutes: Routes = [
+export const SessionRoutes: Routes = [
     {
         path: '',
-        component: EvaluationsComponent
+        component: SessionsComponent
     }
 ];
 
 
 @NgModule({
-    imports: [RouterModule.forChild(EvaluationRoutes)],
+    imports: [RouterModule.forChild(SessionRoutes)],
     exports: [RouterModule],
     declarations: []
 })
-export class EvaluationRoutingModule { }
+export class SessionRoutingModule { }
 
 
 @NgModule({
     imports: [
         CommonModule,
-        EvaluationRoutingModule,
+        SessionRoutingModule,
         CtModule,
         MaterialAppModule,
         FormsModule,
@@ -35,7 +35,7 @@ export class EvaluationRoutingModule { }
         TranslateModule.forChild({})
     ],
     declarations: [
-        EvaluationsComponent
+        SessionsComponent
     ]
 })
-export class EvaluationModule { }
+export class SessionModule { }

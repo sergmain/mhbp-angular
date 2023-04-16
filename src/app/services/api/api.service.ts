@@ -31,9 +31,14 @@ export class ApiService {
         return this.http.post<OperationStatusRest>(url(`api-delete-commit`), generateFormData({ id: apiId }));
     }
 
-    runEvaluation(apiId: string) {
-        console.log("Run evaluation for API scheme #"+ apiId);
-        return this.http.post<OperationStatusRest>(url(`run-evaluation`), generateFormData({ id: apiId }));
+    runEvaluation(evaluationId: string) {
+        console.log("Run evaluation #"+ evaluationId);
+        return this.http.post<OperationStatusRest>(url(`run-evaluation`), generateFormData({ id: evaluationId }));
+    }
+
+    runTestEvaluation(evaluationId: string) {
+        console.log("Run evaluation #"+ evaluationId);
+        return this.http.post<OperationStatusRest>(url(`run-test-evaluation`), generateFormData({ id: evaluationId }));
     }
 
     addFormCommit(name: string, code: string, scheme: string): Observable<OperationStatusRest> {

@@ -1,4 +1,4 @@
-export interface SimpleEvaluation {
+export interface SimpleSession {
     sessionId: number;
     startedOn: number;
     finishedOn?: number;
