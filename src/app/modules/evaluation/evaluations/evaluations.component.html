@@ -1,9 +1,9 @@
-<app-ct-section *ngIf="simpleSessionsResult">
+<app-ct-section *ngIf="simpleEvaluationsResult">
     <app-ct-section-header>
         <app-ct-section-header-row>
             <app-ct-flex justify-content="space-between">
                 <app-ct-flex-item>
-                    <app-ct-heading>Sessions</app-ct-heading>
+                    <app-ct-heading>Evaluations</app-ct-heading>
                 </app-ct-flex-item>
             </app-ct-flex>
         </app-ct-section-header-row>
@@ -19,7 +19,7 @@
                 <app-ct-flex-item>
                     <app-ct-flex justify-content="flex-start" gap="8px">
                         <app-ct-table-pagination
-                                [pageableDefault]="simpleSessionsResult.sessions"
+                                [pageableDefault]="simpleEvaluationsResult.evaluations"
                                 [globalDisable]="isLoading"
                                 (next)="nextPage()"
                                 (prev)="prevPage()">
@@ -36,8 +36,8 @@
 <ng-template #mainTableTemplate>
     <ct-table [isWaiting]="isLoading">
         <table class="mat-table" mat-table="mat-table" [dataSource]="dataSource">
-            <ng-container matColumnDef="sessionId">
-                <th mat-header-cell *matHeaderCellDef>SessionId</th>
+            <ng-container matColumnDef="evaluationId">
+                <th mat-header-cell *matHeaderCellDef>EvalutationId</th>
                 <td mat-cell="mat-cell" *matCellDef="let el">{{el.sessionId}} </td>
             </ng-container>
             <ng-container matColumnDef="startedOn">

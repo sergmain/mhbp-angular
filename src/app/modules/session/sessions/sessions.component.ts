@@ -10,8 +10,8 @@ import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'sessions',
-  templateUrl: './evaluations.component.html',
-  styleUrls: ['./evaluations.component.sass']
+  templateUrl: './sessions.component.html',
+  styleUrls: ['./sessions.component.sass']
 })
 export class SessionsComponent extends UIStateComponent implements OnInit {
 //   columnsToDisplay: string[] = ['sessionId', 'startedOn', 'finishedOn',

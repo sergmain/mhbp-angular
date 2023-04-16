@@ -43,7 +43,7 @@
 	"batch.isBatchConsistent.true": "OK",
 	"batch.onlyMyBatches": "Only My Batches",
 	"ctBackButton.back": "Back",
-	"dispatcher.Evaluations": "Evaluations",
+	"dispatcher.Sessions": "Sessions",
 	"dispatcher.Apis": "APIs",
 	"dispatcher.Auths": "Auth",
 	"dispatcher.Accounts": "Accounts",

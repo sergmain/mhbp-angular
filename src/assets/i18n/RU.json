@@ -43,7 +43,7 @@
 	"batch.isBatchConsistent.true": "Да",
 	"batch.onlyMyBatches": "Только мои пакеты",
 	"ctBackButton.back": "Назад",
-	"dispatcher.Evaluations": "Evaluations",
+	"dispatcher.Sessions": "Sessions",
 	"dispatcher.Apis": "APIs",
 	"dispatcher.Auths": "Auth",
 	"dispatcher.Accounts": "Аккаунты",
