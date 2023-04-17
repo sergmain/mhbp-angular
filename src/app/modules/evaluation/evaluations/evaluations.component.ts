@@ -14,10 +14,7 @@ import {EvaluationService} from "@services/evaluation/evaluation.service";
   styleUrls: ['./evaluations.component.sass']
 })
 export class EvaluationsComponent extends UIStateComponent implements OnInit {
-//   columnsToDisplay: string[] = ['sessionId', 'startedOn', 'finishedOn',
-//     'sessionStatus', 'safe', 'normalPercent', 'failPercent', 'errorPercent', 'providerCode', 'modelInfo'];
-  columnsToDisplay: string[] = ['evaluationId', 'startedOn', 'providerCode',
-    'normalPercent', 'failPercent', 'errorPercent', 'bts'];
+  columnsToDisplay: string[] = ['evaluationId', 'code', 'createdOn', 'bts'];
   simpleEvaluationsResult: SimpleEvaluationsResult;
   dataSource = new MatTableDataSource<SimpleEvaluation>([]);
 

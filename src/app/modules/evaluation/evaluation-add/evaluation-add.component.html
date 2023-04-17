@@ -1,0 +1,41 @@
+<app-ct-cols *ngIf="response">
+    <app-ct-col size="6">
+        <app-ct-section>
+            <app-ct-section-header>
+                <app-ct-section-header-row>
+                    <app-ct-heading>{{ 'batch-add.Upload file for processing' | translate }}</app-ct-heading>
+                </app-ct-section-header-row>
+            </app-ct-section-header>
+            <app-ct-section-body>
+                <app-ct-section-body-row>
+                    <mat-form-field appearance="outline">
+                        <mat-label> {{ 'batch-add.List of Source Codes' | translate }}</mat-label>
+                        <mat-select [(ngModel)]="apiUid">
+                            <div *ngFor="let sourceCode of listOfApis">
+                                <mat-option [value]="sourceCode">{{sourceCode.uid}}</mat-option>
+                            </div>
+                        </mat-select>
+                        <mat-hint>{{ 'batch-add.This is a required field.' | translate }}</mat-hint>
+                    </mat-form-field>
+                </app-ct-section-body-row>
+            </app-ct-section-body>
+            <app-ct-section-footer>
+                <app-ct-section-footer-row>
+                    <app-ct-flex justify-content="flex-end" gap="8px">
+                        <app-ct-flex-item>
+                            <button mat-stroked-button="mat-stroked-button" (click)="back()">
+                                {{ 'batch-add.Cancel' | translate }}</button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button="mat-flat-button" color="primary" [disabled]="!apiUid"
+                                (click)="create()"> {{ 'batch-add.Upload-File-button' | translate }}</button>
+                        </app-ct-flex-item>
+                    </app-ct-flex>
+                </app-ct-section-footer-row>
+            </app-ct-section-footer>
+        </app-ct-section>
+    </app-ct-col>
+    <app-ct-col size="6">
+        <app-ct-rest-status [content]="uploadResponse"></app-ct-rest-status>
+    </app-ct-col>
+</app-ct-cols>

@@ -7,11 +7,19 @@ import { MaterialAppModule } from '@src/app/ngmaterial.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EvaluationsComponent } from './evaluations/evaluations.component';
+import {EvaluationAddComponent} from "./evaluation-add/evaluation-add.component";
 
 export const EvaluationRoutes: Routes = [
     {
         path: '',
         component: EvaluationsComponent
+    },
+    {
+        path: 'add',
+        component: EvaluationAddComponent,
+        data: {
+            backConfig: ['../']
+        }
     }
 ];
 
@@ -35,7 +43,7 @@ export class EvaluationRoutingModule { }
         TranslateModule.forChild({})
     ],
     declarations: [
-        EvaluationsComponent
+        EvaluationsComponent, EvaluationAddComponent
     ]
 })
 export class EvaluationModule { }

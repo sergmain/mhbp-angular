@@ -4,6 +4,8 @@
 # The above will handle all files NOT found below
 #
 *.css           text
+*.scss          text
+*.sass          text
 *.html          text
 *.java          text
 *.js            text
@@ -13,6 +15,7 @@
 *.xml           text
 *.cmd           text
 *.py            text
+*.ts            text
 *.yaml          text
 *.yml           text
 *.csv           text

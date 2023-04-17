@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {SimpleEvaluationsResult} from './SimpleEvaluationsResult';
 import {OperationStatusRest} from "@app/models/OperationStatusRest";
 import {generateFormData} from "@app/helpers/generateFormData";
+import {EvaluationUidsForCompany} from "./EvaluationUidsForCompany";
 
 
 const url = (s: string): string => `${environment.baseUrl}dispatcher/evaluation/${s}`;
@@ -26,5 +27,16 @@ export class EvaluationService {
         return this.http.post<OperationStatusRest>(url(`evaluation-delete-commit`), generateFormData({ evaluationId: evaluationId }));
     }
 
+    evaluationAdd(): Observable<EvaluationUidsForCompany> {
+        return this.http.get<EvaluationUidsForCompany>(url(`evaluation-add`));
+    }
 
+    addFormCommit(apiId: string, kbIds: string[]): Observable<OperationStatusRest> {
+        return this.http.post<OperationStatusRest>(
+            url(`evaluation-add-commit`),
+            generateFormData({
+                apiId, kbIds
+            })
+        );
+    }
 }

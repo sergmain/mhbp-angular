@@ -31,11 +31,10 @@ export class AuthAddComponent {
     ) { }
 
     @ViewChild(MatButton) button: MatButton;
-    // @Output() responseChange: EventEmitter<SourceCodeResult> = new EventEmitter<SourceCodeResult>();
-    @Output() cancelEmitter: EventEmitter<void> = new EventEmitter<void>();
+    @Output() abort: EventEmitter<void> = new EventEmitter<void>();
 
     cancel(): void {
-        this.cancelEmitter.emit();
+        this.abort.emit();
     }
 
     create(): void {
