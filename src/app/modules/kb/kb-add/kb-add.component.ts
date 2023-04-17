@@ -30,10 +30,10 @@ export class KbAddComponent {
     ) { }
 
     @ViewChild(MatButton) button: MatButton;
-    @Output() cancelEmitter: EventEmitter<void> = new EventEmitter<void>();
+    @Output() abort: EventEmitter<void> = new EventEmitter<void>();
 
     cancel(): void {
-        this.cancelEmitter.emit();
+        this.abort.emit();
     }
 
     create(): void {
