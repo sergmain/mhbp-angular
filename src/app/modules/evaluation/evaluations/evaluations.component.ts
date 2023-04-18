@@ -7,6 +7,7 @@ import { SimpleEvaluation } from '@src/app/services/evaluation/SimpleEvaluation'
 import {ConfirmationDialogMethod} from "@src/app/components/app-dialog-confirmation/app-dialog-confirmation.component";
 import {MatDialog} from "@angular/material/dialog";
 import {EvaluationService} from "@services/evaluation/evaluation.service";
+import {SimpleApi} from "@services/api/SimpleApi";
 
 @Component({
   selector: 'evaluations',
@@ -58,6 +59,30 @@ export class EvaluationsComponent extends UIStateComponent implements OnInit {
   delete(evaluation: SimpleEvaluation): void {
     this.evaluationService
         .evaluationDeleteCommit(evaluation.evaluationId.toString())
+        .subscribe(v => this.getEvaluations(this.simpleEvaluationsResult.evaluations.number));
+  }
+
+  @ConfirmationDialogMethod({
+    question: (api: SimpleApi): string => `Do you want to run an evaluation #${api.id}`,
+
+    resolveTitle: 'Run',
+    rejectTitle: 'Cancel'
+  })
+  runEvaluation(evaluation: SimpleEvaluation): void {
+    this.evaluationService
+        .runEvaluation(evaluation.evaluationId.toString())
+        .subscribe(v => this.getEvaluations(this.simpleEvaluationsResult.evaluations.number));
+  }
+
+  @ConfirmationDialogMethod({
+    question: (api: SimpleApi): string => `Do you want to run a test evaluation #${api.id}`,
+
+    resolveTitle: 'Test',
+    rejectTitle: 'Cancel'
+  })
+  runTestEvaluation(evaluation: SimpleEvaluation): void {
+    this.evaluationService
+        .runTestEvaluation(evaluation.evaluationId.toString())
         .subscribe(v => this.getEvaluations(this.simpleEvaluationsResult.evaluations.number));
   }
 

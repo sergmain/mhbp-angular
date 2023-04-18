@@ -63,31 +63,6 @@ export class ApisComponent extends UIStateComponent implements OnInit, Confirmat
         .subscribe(v => this.getApis(this.simpleApisResult.apis.number));
   }
 
-  @ConfirmationDialogMethod({
-    question: (api: SimpleApi): string => `Do you want to run an evaluation #${api.id}`,
-
-    resolveTitle: 'Run',
-    rejectTitle: 'Cancel'
-  })
-  runEvaluation(api: SimpleApi): void {
-    this.apiService
-        .runEvaluation(api.id.toString())
-        .subscribe(v => this.getApis(this.simpleApisResult.apis.number));
-  }
-
-  @ConfirmationDialogMethod({
-    question: (api: SimpleApi): string => `Do you want to run a test evaluation #${api.id}`,
-
-    resolveTitle: 'Test',
-    rejectTitle: 'Cancel'
-  })
-  runTestEvaluation(api: SimpleApi): void {
-    this.apiService
-        .runTestEvaluation(api.id.toString())
-        .subscribe(v => this.getApis(this.simpleApisResult.apis.number));
-  }
-
-
   prevPage(): void {
     this.getApis((this.simpleApisResult.apis.number - 1));
   }

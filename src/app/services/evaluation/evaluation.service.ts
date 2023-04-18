@@ -39,4 +39,16 @@ export class EvaluationService {
             })
         );
     }
+
+    runEvaluation(evaluationId: string) {
+        console.log("Run evaluation #"+ evaluationId);
+        return this.http.post<OperationStatusRest>(url(`run-evaluation`), generateFormData({ id: evaluationId }));
+    }
+
+    runTestEvaluation(evaluationId: string) {
+        console.log("Run evaluation #"+ evaluationId);
+        return this.http.post<OperationStatusRest>(url(`run-test-evaluation`), generateFormData({ id: evaluationId }));
+    }
+
+
 }
