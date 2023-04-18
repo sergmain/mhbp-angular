@@ -1,5 +1,6 @@
 {
 	"main.Cancel": "Отмена",
+	"main.This is a required field": "Обязательное поле",
 
 	"ai.Experiments": "Эксперименты",
 	"ai.Results": "Результаты",
@@ -67,5 +68,7 @@
 	"evaluation.WithError": "Fail",
 	"evaluation.SystemError": "SystemError",
 
-	"evaluation-add.Create": "Create"
+	"evaluation-add.Create a new evaluation for specific API": "Create a new evaluation for specific API",
+	"evaluation-add.List of APIs": "List of APIs",
+	"evaluation-add.Create": "Создать"
 }

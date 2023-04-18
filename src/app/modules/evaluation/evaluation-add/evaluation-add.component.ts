@@ -16,6 +16,7 @@ import {MatButton} from "@angular/material/button";
 import {SelectionModel} from "@angular/cdk/collections";
 import {ProcessorStatus} from "@services/processors/ProcessorStatus";
 import {MatTableDataSource} from "@angular/material/table";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
     selector: 'evaluation-add',
@@ -37,6 +38,9 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
     apiUid: ApiUid;
     listOfApis: ApiUid[] = [];
     listOfKbs: KbUid[] = [];
+    form = new FormGroup({
+        code: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    });
 
     constructor(
         private evaluationService: EvaluationService,
@@ -77,9 +81,7 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
                 this.response = response;
                 this.listOfApis = this.response.apis;
                 this.listOfKbs = this.response.kbs;
-                if (this.listOfKbs.length) {
-                    this.dataSource = new MatTableDataSource(this.listOfKbs);
-                }
+                this.dataSource = new MatTableDataSource(this.listOfKbs || []);
                 this.isLoading = false;
             });
     }
@@ -99,8 +101,9 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
         this.currentStates.add(this.states.wait);
         const subscribe: Subscription = this.evaluationService
             .addFormCommit(
+                this.form.value.code,
                 this.apiUid.id.toString(),
-                ["1"]
+                this.selection.selected.map(v => v.id.toString())
             )
             .subscribe(
                 (response) => {
@@ -120,4 +123,7 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
         this.router.navigate(['../'], { relativeTo: this.route });
     }
 
+    notToCreate() {
+        return this.apiUid==null || this.selection.isEmpty() || this.form.invalid;
+    }
 }
