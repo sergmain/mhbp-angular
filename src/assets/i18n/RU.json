@@ -1,4 +1,6 @@
 {
+	"main.Cancel": "Отмена",
+
 	"ai.Experiments": "Эксперименты",
 	"ai.Results": "Результаты",
 	"app-view.About": "Подробнее",
@@ -63,5 +65,7 @@
 	"evaluation.ProviderCode": "Provider code",
 	"evaluation.WithoutError": "No error",
 	"evaluation.WithError": "Fail",
-	"evaluation.SystemError": "SystemError"
+	"evaluation.SystemError": "SystemError",
+
+	"evaluation-add.Create": "Create"
 }

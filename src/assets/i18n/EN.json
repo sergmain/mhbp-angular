@@ -1,4 +1,6 @@
 {
+	"main.Cancel": "Cancel",
+
 	"ai.Experiments": "Experiments",
 	"ai.Results": "Results",
 	"app-view.About": "About",
@@ -63,5 +65,7 @@
 	"evaluation.ProviderCode": "Provider code",
 	"evaluation.WithoutError": "No error",
 	"evaluation.WithError": "Fail",
-	"evaluation.SystemError": "SystemError"
+	"evaluation.SystemError": "SystemError",
+
+	"evaluation-add.Create": "Create"
 }

@@ -13,6 +13,9 @@ import {KbUid} from "@services/evaluation/KbUid";
 import {OperationStatus} from "@app/enums/OperationStatus";
 import {Subscription} from "rxjs";
 import {MatButton} from "@angular/material/button";
+import {SelectionModel} from "@angular/cdk/collections";
+import {ProcessorStatus} from "@services/processors/ProcessorStatus";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
     selector: 'evaluation-add',
@@ -26,6 +29,10 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
     currentStates: Set<LoadStates> = new Set();
     response: EvaluationUidsForCompany;
     uploadResponse: OperationStatusRest;
+
+    selection: SelectionModel<KbUid> = new SelectionModel<KbUid>(true, []);
+    dataSource: MatTableDataSource<KbUid> = new MatTableDataSource<KbUid>([]);
+    columnsToDisplay: string[] = ['check', 'id', 'uid'];
 
     apiUid: ApiUid;
     listOfApis: ApiUid[] = [];
@@ -70,7 +77,21 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
                 this.response = response;
                 this.listOfApis = this.response.apis;
                 this.listOfKbs = this.response.kbs;
+                if (this.listOfKbs.length) {
+                    this.dataSource = new MatTableDataSource(this.listOfKbs);
+                }
+                this.isLoading = false;
             });
+    }
+
+    isAllSelected(): boolean {
+        return this.selection.selected.length === this.dataSource.data.length;
+    }
+
+    masterToggle(): void {
+        this.isAllSelected() ?
+            this.selection.clear() :
+            this.dataSource.data.forEach(row => this.selection.select(row));
     }
 
     create(): void {
