@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import { LoadStates } from '@app/enums/LoadStates';
@@ -30,11 +30,6 @@ export class KbAddComponent {
     ) { }
 
     @ViewChild(MatButton) button: MatButton;
-    @Output() abort: EventEmitter<void> = new EventEmitter<void>();
-
-    cancel(): void {
-        this.abort.emit();
-    }
 
     create(): void {
         this.button.disabled = true;

@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {SimpleSessionsResult} from './SimpleSessionsResult';
 import {OperationStatusRest} from "@app/models/OperationStatusRest";
 import {generateFormData} from "@app/helpers/generateFormData";
+import {ErrorsResult} from "@services/session/ErrorsResult";
 
 
 const url = (s: string): string => `${environment.baseUrl}dispatcher/session/${s}`;
@@ -26,5 +27,7 @@ export class SessionService {
         return this.http.post<OperationStatusRest>(url(`session-delete-commit`), generateFormData({ sessionId: sessionId }));
     }
 
+    errors = (page: string, sessionId: string): Observable<ErrorsResult> =>
+        this.http.get<ErrorsResult>(url(`session-errors/${sessionId}`), { params: { page } })
 
 }

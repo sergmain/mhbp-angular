@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoadStates} from '@app/enums/LoadStates';
 import {TranslateService} from '@ngx-translate/core';
@@ -14,7 +14,6 @@ import {OperationStatus} from "@app/enums/OperationStatus";
 import {Subscription} from "rxjs";
 import {MatButton} from "@angular/material/button";
 import {SelectionModel} from "@angular/cdk/collections";
-import {ProcessorStatus} from "@services/processors/ProcessorStatus";
 import {MatTableDataSource} from "@angular/material/table";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
@@ -54,11 +53,6 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
     }
 
     @ViewChild(MatButton) button: MatButton;
-    @Output() abort: EventEmitter<void> = new EventEmitter<void>();
-
-    cancel(): void {
-        this.abort.emit();
-    }
 
     ngOnInit(): void {
         this.subscribeSubscription(this.settingsService.events.subscribe(event => {

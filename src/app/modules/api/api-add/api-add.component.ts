@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoadStates} from '@app/enums/LoadStates';
@@ -6,7 +6,6 @@ import {DefaultResponse} from '@app/models/DefaultResponse';
 import {OperationStatus} from '@src/app/enums/OperationStatus';
 import {Subscription} from 'rxjs';
 import {MatButton} from "@angular/material/button";
-import {SourceCodeResult} from "@services/source-codes/SourceCodeResult";
 import {ApiService} from "@services/api/api.service";
 
 @Component({
@@ -32,12 +31,6 @@ export class ApiAddComponent {
     ) { }
 
     @ViewChild(MatButton) button: MatButton;
-    @Output() responseChange: EventEmitter<SourceCodeResult> = new EventEmitter<SourceCodeResult>();
-    @Output() cancelEmitter: EventEmitter<void> = new EventEmitter<void>();
-
-    cancel(): void {
-        this.cancelEmitter.emit();
-    }
 
     create(): void {
         this.button.disabled = true;

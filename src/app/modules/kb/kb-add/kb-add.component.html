@@ -27,7 +27,8 @@
         <app-ct-section-footer-row>
           <app-ct-flex justify-content="flex-end" gap="8px">
             <app-ct-flex-item>
-              <button mat-stroked-button (click)="cancel()">Cancel</button>
+              <button mat-stroked-button="mat-stroked-button" routerLink="/dispatcher/kb">
+                {{ 'main.Cancel' | translate }}</button>
             </app-ct-flex-item>
             <app-ct-flex-item>
               <button #button mat-flat-button="mat-flat-button" (click)="create()" color="primary"

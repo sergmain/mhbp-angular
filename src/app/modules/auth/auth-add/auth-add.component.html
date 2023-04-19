@@ -4,7 +4,7 @@
     <app-ct-section>
       <app-ct-section-header>
         <app-ct-section-header-row>
-          <app-ct-heading>Add new API</app-ct-heading>
+          <app-ct-heading>Add new authentication of APIs</app-ct-heading>
         </app-ct-section-header-row>
       </app-ct-section-header>
       <app-ct-section-body>
@@ -28,7 +28,8 @@
         <app-ct-section-footer-row>
           <app-ct-flex justify-content="flex-end" gap="8px">
             <app-ct-flex-item>
-              <button mat-stroked-button (click)="cancel()">Cancel</button>
+              <button mat-stroked-button="mat-stroked-button" routerLink="/dispatcher/auth">
+                {{ 'main.Cancel' | translate }}</button>
             </app-ct-flex-item>
             <app-ct-flex-item>
               <button #button mat-flat-button="mat-flat-button" (click)="create()" color="primary"

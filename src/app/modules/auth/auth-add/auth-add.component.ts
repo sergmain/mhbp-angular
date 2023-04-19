@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import { LoadStates } from '@app/enums/LoadStates';
@@ -6,7 +6,6 @@ import { DefaultResponse } from '@app/models/DefaultResponse';
 import { OperationStatus } from '@src/app/enums/OperationStatus';
 import { Subscription } from 'rxjs';
 import {MatButton} from "@angular/material/button";
-// import {SourceCodeResult} from "@services/source-codes/SourceCodeResult";
 import {AuthService} from "@services/auth/auth.service";
 
 @Component({
@@ -31,11 +30,6 @@ export class AuthAddComponent {
     ) { }
 
     @ViewChild(MatButton) button: MatButton;
-    @Output() abort: EventEmitter<void> = new EventEmitter<void>();
-
-    cancel(): void {
-        this.abort.emit();
-    }
 
     create(): void {
         this.button.disabled = true;
