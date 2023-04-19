@@ -68,38 +68,6 @@
             </button>
 
             <button *ngIf="
-                    isRole.Admin || 
-                    isRole.Data
-                " 
-                mat-button 
-                routerLinkActive="active"
-                routerLink="/dispatcher/global-variables">
-                    {{ 'dispatcher.Variables' | translate }}
-            </button>
-
-            <button *ngIf="
-                    isRole.MainAssetManager ||
-                    isRole.Admin ||
-                    isRole.Operator ||
-                    isRole.Data
-                " 
-                mat-button 
-                routerLinkActive="active"
-                routerLink="/dispatcher/functions">
-                    {{ 'dispatcher.Functions' | translate }}
-            </button>
-
-            <button *ngIf="
-                    isRole.Admin ||
-                    isRole.Data
-                " 
-                mat-button 
-                routerLinkActive="active"
-                routerLink="/dispatcher/processors">
-                    {{ 'dispatcher.Processors' | translate }}
-            </button>
-
-            <button *ngIf="
                     isRole.Admin
                 " 
                 mat-button 

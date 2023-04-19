@@ -66,17 +66,17 @@
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button color="warn" size="forTableRow" (click)="runTestEvaluation(el)">
+                                Test
+                            </button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button color="warn" size="forTableRow" (click)="runEvaluation(el)">
+                                Run
+                            </button>
+                        </app-ct-flex-item>
                     </app-ct-flex>
-                    <app-ct-flex-item>
-                        <button mat-flat-button color="warn" size="forTableRow" (click)="runTestEvaluation(el)">
-                            Test
-                        </button>
-                    </app-ct-flex-item>
-                    <app-ct-flex-item>
-                        <button mat-flat-button color="warn" size="forTableRow" (click)="runEvaluation(el)">
-                            Run
-                        </button>
-                    </app-ct-flex-item>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>

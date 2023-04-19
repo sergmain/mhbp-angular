@@ -22,7 +22,6 @@ const commonRequiredRoles: Role[] = [
 ];
 
 
-
 export const DispatcherRoutes: Routes = [
     {
         path: '',
@@ -36,56 +35,6 @@ export const DispatcherRoutes: Routes = [
                 path: '',
                 component: DispatcherIndexComponent
             }]
-    },
-    {
-        path: 'source-codes',
-        canActivate: [RoleRouteGuard],
-        component: DispatcherRootComponent,
-        loadChildren: () => import('@src/app/modules/source-codes/source-codes.module').then(m => m.SourceCodeModule),
-        data: {
-            requiredRoles: [Role.MainAssetManager, Role.Admin, Role.Data, Role.Manager],
-            section: 'source-codes'
-        },
-    },
-    {
-        path: 'global-variables',
-        canActivate: [RoleRouteGuard],
-        component: DispatcherRootComponent,
-        loadChildren: () => import('@src/app/modules/global-variables/global-variables.module').then(m => m.GlobalVariablesModule),
-        data: {
-            requiredRoles: [Role.Admin, Role.Data],
-            section: 'global-variables'
-        }
-    },
-    {
-        path: 'functions',
-        canActivate: [RoleRouteGuard],
-        component: DispatcherRootComponent,
-        loadChildren: () => import('@src/app/modules/functions/functions.module').then(m => m.FunctionsModule),
-        data: {
-            requiredRoles: [Role.MainAssetManager, Role.Admin, Role.Data, Role.Manager],
-            section: 'functions'
-        }
-    },
-    {
-        path: 'processors',
-        canActivate: [RoleRouteGuard],
-        component: DispatcherRootComponent,
-        loadChildren: () => import('src/app/modules/processors/processors.module').then(m => m.ProcessorsModule),
-        data: {
-            requiredRoles: [Role.Admin, Role.Data],
-            section: 'processors'
-        }
-    },
-    {
-        path: 'accounts',
-        canActivate: [RoleRouteGuard],
-        component: DispatcherRootComponent,
-        loadChildren: () => import('src/app/modules/accounts/accounts.module').then(m => m.AccountsModule),
-        data: {
-            requiredRoles: [Role.Admin],
-            section: 'accounts'
-        }
     },
     {
         path: 'session',
@@ -135,6 +84,16 @@ export const DispatcherRoutes: Routes = [
         data: {
             requiredRoles: [Role.MainAdmin, Role.MainOperator, Role.MainSupport, Role.Manager],
             section: 'apis'
+        }
+    },
+    {
+        path: 'accounts',
+        canActivate: [RoleRouteGuard],
+        component: DispatcherRootComponent,
+        loadChildren: () => import('src/app/modules/accounts/accounts.module').then(m => m.AccountsModule),
+        data: {
+            requiredRoles: [Role.Admin],
+            section: 'accounts'
         }
     },
     {
