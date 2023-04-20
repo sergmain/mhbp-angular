@@ -14,7 +14,7 @@ import {SimpleError} from "@services/session/SimpleError";
 })
 export class ErrorsComponent extends UIStateComponent implements OnInit {
     dataSource: MatTableDataSource<SimpleError> = new MatTableDataSource<SimpleError>([]);
-    columnsToDisplay: string[] = ['id', 'isEnabled', 'login', 'publicName', 'role', 'createdOn'];
+    columnsToDisplay: string[] = ['id', 'p', 'a'];
     errorsResult: ErrorsResult;
     sessionId: string;
 

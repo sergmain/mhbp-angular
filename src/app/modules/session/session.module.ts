@@ -20,7 +20,7 @@ export const SessionRoutes: Routes = [
         component: ErrorsComponent,
         canActivate: [RoleRouteGuard],
         data: {
-            backConfig: ['../', '../', 'sessions'],
+            backConfig: ['../', '../', ''],
             requiredRoles: [Role.Admin]
         }
     },

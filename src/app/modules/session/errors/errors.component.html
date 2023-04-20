@@ -3,7 +3,7 @@
         <app-ct-section-header-row>
             <app-ct-flex justify-content="space-between">
                 <app-ct-flex-item>
-                    <app-ct-heading>Accounts</app-ct-heading>
+                    <app-ct-heading>Errors</app-ct-heading>
                 </app-ct-flex-item>
             </app-ct-flex>
         </app-ct-section-header-row>
@@ -16,26 +16,13 @@
                         <th mat-header-cell *matHeaderCellDef>ID </th>
                         <td mat-cell *matCellDef="let el">{{el.id}} </td>
                     </ng-container>
-                    <ng-container matColumnDef="isEnabled">
-                        <th mat-header-cell *matHeaderCellDef>Is enabled </th>
-                        <td mat-cell *matCellDef="let el">{{el.enabled ? 'Yes':'No'}} </td>
+                    <ng-container matColumnDef="p">
+                        <th mat-header-cell *matHeaderCellDef>Prompt</th>
+                        <td mat-cell *matCellDef="let el">{{el.p}} </td>
                     </ng-container>
-                    <ng-container matColumnDef="login">
-                        <th mat-header-cell *matHeaderCellDef>Login </th>
-                        <td mat-cell *matCellDef="let el">{{el.username}} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="publicName">
-                        <th mat-header-cell *matHeaderCellDef>Public name </th>
-                        <td mat-cell *matCellDef="let el">{{el.publicName}} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="role">
-                        <th mat-header-cell *matHeaderCellDef>Roles</th>
-                        <td mat-cell *matCellDef="let el">{{el.roles}} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="createdOn">
-                        <th mat-header-cell *matHeaderCellDef>Created On </th>
-                        <td mat-cell *matCellDef="let el">
-                            {{el.createdOn | date:'HH:mm:ss, MMM&nbsp;d,&nbsp;yyyy'}} </td>
+                    <ng-container matColumnDef="a">
+                        <th mat-header-cell *matHeaderCellDef>Expected<br/>Actual</th>
+                        <td mat-cell *matCellDef="let el">{{el.a}}<br/>{{el.raw}} </td>
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"> </tr>
                     <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"> </tr>
@@ -56,10 +43,3 @@
         </app-ct-section-footer-row>
     </app-ct-section-footer>
 </app-ct-section>
-
-
-<ng-template #addButtonTemplate>
-    <button mat-flat-button color="primary" [routerLink]="['../','account','add']">
-        Add New Account
-    </button>
-</ng-template>
