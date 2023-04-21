@@ -64,6 +64,7 @@
 	"evaluation.StartedOn": "Started on",
 	"evaluation.FinishedOn": "Finished on",
 	"evaluation.ProviderCode": "Provider code",
+	"evaluation.ApiInfo": "API info",
 	"evaluation.WithoutError": "No error",
 	"evaluation.WithError": "Fail",
 	"evaluation.SystemError": "SystemError",

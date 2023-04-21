@@ -51,8 +51,14 @@
                 </td>
             </ng-container>
             <ng-container matColumnDef="providerCode">
-                <th mat-header-cell *matHeaderCellDef>{{ 'evaluation.ProviderCode' | translate }}</th>
-                <td mat-cell="mat-cell" *matCellDef="let el">{{el.providerCode}} </td>
+                <th mat-header-cell *matHeaderCellDef>
+                    {{ 'evaluation.ProviderCode' | translate }}<br/>
+                    {{ 'evaluation.ApiInfo' | translate }}
+                </th>
+                <td mat-cell="mat-cell" *matCellDef="let el">
+                    {{el.providerCode}}<br/>
+                    {{el.apiInfo}}
+                </td>
             </ng-container>
             <ng-container matColumnDef="normalPercent">
                 <th mat-header-cell *matHeaderCellDef>{{ 'evaluation.WithoutError' | translate }}</th>

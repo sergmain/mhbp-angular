@@ -8,5 +8,5 @@ export interface SimpleSession {
     fail: number;
     error: number;
     providerCode: string;
-    modelInfo: string;
+    apiInfo: string;
 }
