@@ -9,4 +9,6 @@ export interface SimpleSession {
     error: number;
     providerCode: string;
     apiInfo: string;
+    evaluationId: number;
+    kbs: string;
 }
