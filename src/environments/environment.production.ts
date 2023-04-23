@@ -10,26 +10,26 @@ export const environment: IEnvironment = {
     language: 'EN',
     brandingTitle: 'MHBP',
     brandingMsg:
-        '<b>Metaheuristic behavior platform</b><p>Metaheuristic behavior platform is a SaaS for continuous evaluating and assesing quality of LLMs.</p>' +
+        '<b>Metaheuristic behavior platform</b><p>Metaheuristic behavior platform is a SaaS for continuous evaluating and assessing quality of LLMs.</p>' +
         '<ul><li>' +
-        '<p>Evaluting and assesing quality</p>' +
+        '<p>Evaluating and assessing quality</p>' +
         'MHBP is scheduling requests to LLM and execute such requests. Collect the answers to prompt and evaluate them.' +
         '</li>' +
         '<li>' +
-        '<p>Decisions which are based on the result of evaluatin.</p>' +
-        'Base on the result of evaluating and assesing MHBP can create triggers, events, or call API to inform 3rd parties, if quality of tested LLM was degraded.' +
+        '<p>Decisions which are based on the result of evaluation.</p>' +
+        'Based on the result of evaluating and assessing MHBP can create triggers, events, or call API to inform 3rd parties, if quality of tested LLM was degraded.' +
         '</li>' +
         '</ul>'
     ,
     brandingMsgIndex:
-        '<b>Metaheuristic behavior platform</b><p>Metaheuristic behavior platform is a SaaS for continuous evaluating and assesing quality of LLMs.</p>' +
+        '<b>Metaheuristic behavior platform</b><p>Metaheuristic behavior platform is a SaaS for continuous evaluating and assessing quality of LLMs.</p>' +
         '<ul><li>' +
-        '<p>Evaluting and assesing quality</p>' +
+        '<p>Evaluting and assessing quality</p>' +
         'MHBP is scheduling requests to LLM and execute such requests. Collect the answers to prompt and evaluate them.' +
         '</li>' +
         '<li>' +
-        '<p>Decisions which are based on the result of evaluatin.</p>' +
-        'Base on the result of evaluating and assesing MHBP can create triggers, events, or call API to inform 3rd parties, if quality of tested LLM was degraded.' +
+        '<p>Decisions which are based on the result of evaluation.</p>' +
+        'Based on the result of evaluating and assessing MHBP can create triggers, events, or call API to inform 3rd parties, if quality of tested LLM was degraded.' +
         '</li>' +
         '</ul>'
 };
