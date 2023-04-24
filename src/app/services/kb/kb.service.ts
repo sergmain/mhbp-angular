@@ -5,7 +5,6 @@ import {Observable} from 'rxjs';
 import {SimpleKbsResult} from './SimpleKbsResult';
 import {OperationStatusRest} from "@app/models/OperationStatusRest";
 import {generateFormData} from "@app/helpers/generateFormData";
-import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
 import {SimpleKbResult} from "./SimpleKbResult";
 
 
@@ -48,4 +47,8 @@ export class KbService {
                 params
             }))
 
+    kbInit(kbId: string): Observable<OperationStatusRest> {
+        console.log("Init KB #"+ kbId);
+        return this.http.post<OperationStatusRest>(url(`kb-init`), generateFormData({ id: kbId }));
+    }
 }

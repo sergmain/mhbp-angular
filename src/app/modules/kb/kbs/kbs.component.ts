@@ -52,6 +52,18 @@ export class KbsComponent extends UIStateComponent implements OnInit, Confirmati
 
   @ConfirmationDialogMethod({
     question: (kb: SimpleKb): string =>
+        `Do you want to init KB #${kb.id}`,
+    resolveTitle: 'Init',
+    rejectTitle: 'Cancel'
+  })
+  initKb(kb: SimpleKb) {
+    this.kbService
+        .kbInit(kb.id.toString())
+        .subscribe(v => this.getKbs(this.simpleKbsResult.kbs.number));
+  }
+
+  @ConfirmationDialogMethod({
+    question: (kb: SimpleKb): string =>
         `Do you want to delete KB #${kb.id}`,
 
     resolveTitle: 'Delete',

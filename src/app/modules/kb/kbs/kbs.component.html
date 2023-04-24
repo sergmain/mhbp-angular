@@ -75,6 +75,11 @@
                                     [routerLink]="['/dispatcher/kb/edit/',el.id]" color="primary">
                                 Edit</button>
                         </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button color="warn" size="forTableRow" (click)="initKb(el)" *ngIf="el.status===0">
+                                <mat-icon>Init</mat-icon>
+                            </button>
+                        </app-ct-flex-item>
                     </app-ct-flex>
                 </td>
             </ng-container>
