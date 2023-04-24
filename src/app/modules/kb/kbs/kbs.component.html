@@ -52,14 +52,9 @@
                 <th mat-header-cell *matHeaderCellDef>{{ 'kb.code' | translate }}</th>
                 <td mat-cell="mat-cell" *matCellDef="let el">{{el.code}} </td>
             </ng-container>
-            <ng-container matColumnDef="empty">
-                <td mat-cell *matCellDef="let el"> </td>
-            </ng-container>
-            <ng-container matColumnDef="params">
-                <td mat-cell *matCellDef="let el" [attr.colspan]="columnsToDisplay.length - 1">
-                    <b>Params:</b>
-                    <app-ct-pre-10px>{{el.params || '—'}} </app-ct-pre-10px>
-                </td>
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell="mat-cell" *matCellDef="let el">{{el.status}} </td>
             </ng-container>
             <ng-container matColumnDef="bts">
                 <th mat-header-cell *matHeaderCellDef></th>
@@ -76,11 +71,20 @@
                                 Edit</button>
                         </app-ct-flex-item>
                         <app-ct-flex-item>
-                            <button mat-flat-button color="warn" size="forTableRow" (click)="initKb(el)" *ngIf="el.status===0">
-                                <mat-icon>Init</mat-icon>
+                            <button mat-flat-button color="warn" size="forTableRow" (click)="initKb(el)" >
+                                Init
                             </button>
                         </app-ct-flex-item>
                     </app-ct-flex>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="empty">
+                <td mat-cell *matCellDef="let el"> </td>
+            </ng-container>
+            <ng-container matColumnDef="params">
+                <td mat-cell *matCellDef="let el" [attr.colspan]="columnsToDisplay.length - 1">
+                    <b>Params:</b>
+                    <app-ct-pre-10px>{{el.params || '—'}} </app-ct-pre-10px>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>

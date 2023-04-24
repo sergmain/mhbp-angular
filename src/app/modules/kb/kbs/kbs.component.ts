@@ -14,7 +14,7 @@ import {SimpleKb} from "@services/kb/SimpleKb";
   styleUrls: ['./kbs.component.scss']
 })
 export class KbsComponent extends UIStateComponent implements OnInit, ConfirmationDialogInterface {
-  columnsToDisplay: string[] = ['id', 'code', 'bts'];
+  columnsToDisplay: string[] = ['id', 'code', 'status', 'bts'];
   secondColumnsToDisplay: string[] = ['empty', 'params'];
   simpleKbsResult: SimpleKbsResult;
   dataSource = new MatTableDataSource<SimpleKb>([]);

@@ -3,5 +3,5 @@ export interface SimpleKb {
     code: string;
     params: string;
     editable: boolean;
-    status: number;
+    status: string;
 }
