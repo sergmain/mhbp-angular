@@ -24,7 +24,7 @@ export const environment: IEnvironment = {
     brandingMsgIndex:
         '<b>Metaheuristic behavior platform</b><p>Metaheuristic behavior platform is a SaaS for continuous evaluating and assessing quality of LLMs.</p>' +
         '<ul><li>' +
-        '<p>Evaluting and assessing quality</p>' +
+        '<p>Evaluating and assessing quality</p>' +
         'MHBP is scheduling requests to LLM and execute such requests. Collect the answers to prompt and evaluate them.' +
         '</li>' +
         '<li>' +
