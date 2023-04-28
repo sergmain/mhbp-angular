@@ -3,5 +3,5 @@ export interface SimpleError {
     sessionId: number;
     p: string;
     a: string;
-    raw: string;
+    r: string;
 }
