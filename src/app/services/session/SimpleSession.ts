@@ -10,5 +10,5 @@ export interface SimpleSession {
     providerCode: string;
     apiInfo: string;
     evaluationId: number;
-    kbs: string;
+    chapters: string;
 }

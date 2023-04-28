@@ -31,11 +31,11 @@ export class EvaluationService {
         return this.http.get<EvaluationUidsForCompany>(url(`evaluation-add`));
     }
 
-    addFormCommit(code:string, apiId: string, kbIds: string[]): Observable<OperationStatusRest> {
+    addFormCommit(code:string, apiId: string, chapterIds: string[]): Observable<OperationStatusRest> {
         return this.http.post<OperationStatusRest>(
             url(`evaluation-add-commit`),
             generateFormData({
-                code, apiId, kbIds
+                code, apiId, chapterIds: chapterIds
             })
         );
     }

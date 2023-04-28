@@ -9,7 +9,7 @@ import {SettingsService, SettingsServiceEventChange} from '@src/app/services/set
 import {EvaluationService} from "@services/evaluation/evaluation.service";
 import {EvaluationUidsForCompany} from "@services/evaluation/EvaluationUidsForCompany";
 import {ApiUid} from "@services/evaluation/ApiUid";
-import {KbUid} from "@services/evaluation/KbUid";
+import {ChapterUid} from "@services/evaluation/ChapterUid";
 import {OperationStatus} from "@app/enums/OperationStatus";
 import {Subscription} from "rxjs";
 import {MatButton} from "@angular/material/button";
@@ -30,13 +30,13 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
     response: EvaluationUidsForCompany;
     uploadResponse: OperationStatusRest;
 
-    selection: SelectionModel<KbUid> = new SelectionModel<KbUid>(true, []);
-    dataSource: MatTableDataSource<KbUid> = new MatTableDataSource<KbUid>([]);
+    selection: SelectionModel<ChapterUid> = new SelectionModel<ChapterUid>(true, []);
+    dataSource: MatTableDataSource<ChapterUid> = new MatTableDataSource<ChapterUid>([]);
     columnsToDisplay: string[] = ['check', 'id', 'uid'];
 
     apiUid: ApiUid;
     listOfApis: ApiUid[] = [];
-    listOfKbs: KbUid[] = [];
+    listOfChapters: ChapterUid[] = [];
     form = new FormGroup({
         code: new FormControl('', [Validators.required, Validators.minLength(3)]),
     });
@@ -74,8 +74,8 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
             .subscribe((response) => {
                 this.response = response;
                 this.listOfApis = this.response.apis;
-                this.listOfKbs = this.response.kbs;
-                this.dataSource = new MatTableDataSource(this.listOfKbs || []);
+                this.listOfChapters = this.response.chapters;
+                this.dataSource = new MatTableDataSource(this.listOfChapters || []);
                 this.isLoading = false;
             });
     }

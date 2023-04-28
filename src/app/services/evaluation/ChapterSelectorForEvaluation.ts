@@ -1,12 +1,12 @@
 import {EvaluationData} from "./EvaluationData";
 
-export class KbSelectorForEvaluation {
+export class ChapterSelectorForEvaluation {
     constructor() { }
 
     protected list: number[] = [];
 
-    protected getId(batchData: EvaluationData.EvaluationInfo): number {
-        return batchData.evaluationId;
+    protected getId(evaluationInfo: EvaluationData.EvaluationInfo): number {
+        return evaluationInfo.evaluationId;
     }
 
     toggle(batchData: EvaluationData.EvaluationInfo): void {
@@ -18,8 +18,8 @@ export class KbSelectorForEvaluation {
         this.list.sort((a, z) => a - z);
     }
 
-    isSelected(batchData: EvaluationData.EvaluationInfo): boolean {
-        return this.list.indexOf(this.getId(batchData)) !== -1;
+    isSelected(evaluationInfo: EvaluationData.EvaluationInfo): boolean {
+        return this.list.indexOf(this.getId(evaluationInfo)) !== -1;
     }
 
     clear(): void {
