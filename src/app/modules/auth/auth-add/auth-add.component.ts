@@ -42,7 +42,7 @@ export class AuthAddComponent {
             .subscribe(
                 (response) => {
                     if (response.status === OperationStatus.OK) {
-                        this.router.navigate(['../', 'auths'], { relativeTo: this.activatedRoute });
+                        this.router.navigate(['../'], { relativeTo: this.activatedRoute });
                     }
                 },
                 () => {},

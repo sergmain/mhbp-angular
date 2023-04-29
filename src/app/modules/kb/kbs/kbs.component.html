@@ -60,19 +60,19 @@
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let el">
                     <app-ct-flex justify-content="flex-end" gap="8px" *ngIf="el.editable">
-                        <app-ct-flex-item>
-                            <button mat-flat-button color="warn" size="forTableRow" (click)="delete(el)">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </app-ct-flex-item>
-                        <app-ct-flex-item>
+                        <app-ct-flex-item  *ngIf="false">
                             <button mat-flat-button size="forTableRow"
                                     [routerLink]="['/dispatcher/kb/edit/',el.id]" color="primary">
                                 Edit</button>
                         </app-ct-flex-item>
                         <app-ct-flex-item>
-                            <button mat-flat-button color="warn" size="forTableRow" (click)="initKb(el)" >
+                            <button mat-flat-button size="forTableRow" (click)="initKb(el)" color="primary">
                                 Init
+                            </button>
+                        </app-ct-flex-item>
+                        <app-ct-flex-item>
+                            <button mat-flat-button color="warn" size="forTableRow" (click)="delete(el)">
+                                <mat-icon>delete</mat-icon>
                             </button>
                         </app-ct-flex-item>
                     </app-ct-flex>

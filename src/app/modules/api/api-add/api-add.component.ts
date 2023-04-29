@@ -44,7 +44,7 @@ export class ApiAddComponent {
             .subscribe(
                 (response) => {
                     if (response.status === OperationStatus.OK) {
-                        this.router.navigate(['../', 'apis'], { relativeTo: this.activatedRoute });
+                        this.router.navigate(['../'], { relativeTo: this.activatedRoute });
                     }
                 },
                 () => {},

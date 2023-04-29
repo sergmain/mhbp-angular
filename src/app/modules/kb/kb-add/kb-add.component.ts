@@ -42,7 +42,7 @@ export class KbAddComponent {
             .subscribe(
                 (response) => {
                     if (response.status === OperationStatus.OK) {
-                        this.router.navigate(['../', 'kbs'], { relativeTo: this.activatedRoute });
+                        this.router.navigate(['../'], { relativeTo: this.activatedRoute });
                     }
                 },
                 () => {},

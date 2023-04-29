@@ -23,7 +23,7 @@ export const KbRoutes: Routes = [
         }
     },
     {
-        path: 'params-edit',
+        path: 'edit',
         component: KbEditComponent,
         data: {
             backConfig: ['../']
