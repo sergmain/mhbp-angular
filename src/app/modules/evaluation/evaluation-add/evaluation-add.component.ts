@@ -102,7 +102,7 @@ export class EvaluationAddComponent extends UIStateComponent implements OnInit, 
             .subscribe(
                 (response) => {
                     if (response.status === OperationStatus.OK) {
-                        this.router.navigate(['../', 'evaluations'], { relativeTo: this.route });
+                        this.router.navigate(['../'], { relativeTo: this.route });
                     }
                 },
                 () => {},
