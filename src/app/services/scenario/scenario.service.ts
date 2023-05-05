@@ -24,27 +24,27 @@ export class ScenarioService {
 
     scenarioGroupDeleteCommit(scenarioGroupId: string): Observable<OperationStatusRest> {
         console.log("Delete Scenario Group #"+ scenarioGroupId);
-        return this.http.post<OperationStatusRest>(url(`scenario-group-delete-commit`), generateFormData({ sessionId: scenarioGroupId }));
+        return this.http.post<OperationStatusRest>(url(`scenario-group-delete-commit`), generateFormData({ scenarioGroupId: scenarioGroupId }));
     }
 
     scenarios = (page: string, scenarioGroupId: string): Observable<ScenariosResult> =>
         this.http.get<ScenariosResult>(url(`scenarios/${scenarioGroupId}`), { params: { page } })
 
 
-    addScenarioGroupFormCommit(code: string, description: string): Observable<OperationStatusRest> {
+    addScenarioGroupFormCommit(name: string, description: string): Observable<OperationStatusRest> {
         return this.http.post<OperationStatusRest>(
             url(`scenario-group-add-commit`),
             generateFormData({
-                code, description
+                name, description
             })
         );
     }
 
-    addScenarioFormCommit(scenarioGroupId: number, code: string, description: string): Observable<OperationStatusRest> {
+    addScenarioFormCommit(scenarioGroupId: number, name: string, description: string): Observable<OperationStatusRest> {
         return this.http.post<OperationStatusRest>(
             url(`scenario-add-commit`),
             generateFormData({
-                scenarioGroupId, code, description
+                scenarioGroupId, name, description
             })
         );
     }

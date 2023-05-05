@@ -17,6 +17,13 @@ export const ScenarioRoutes: Routes = [
         component: ScenarioGroupsComponent
     },
     {
+        path: 'add',
+        component: ScenarioGroupAddComponent,
+        data: {
+            backConfig: ['../']
+        }
+    },
+    {
         path: ':scenarioGroupId/scenarios',
         component: ScenariosComponent,
         canActivate: [RoleRouteGuard],

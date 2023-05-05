@@ -1,6 +1,9 @@
 {
 	"main.Cancel": "Cancel",
 	"main.This is a required field": "This is a required field",
+	"main.CreatedOn": "Created On",
+	"main.Name": "Name",
+	"main.Description": "Description",
 
 	"ai.Experiments": "Experiments",
 	"ai.Results": "Results",
@@ -23,7 +26,6 @@
 	"batch-status.Status of execution of batch _batchId_": "Status of execution of batch #{{batchId}}",
 	"batch.Batch": "Batch",
 	"batch.Discard": "Discard",
-	"batch.Created On": "Created On",
 	"batch.Download": "Download",
 	"batch.Download Result": "Download Result",
 	"batch.Exec State": "Exec State",
@@ -60,6 +62,8 @@
 
 	"api.name": "API name",
 	"api.code": "API code",
+
+	"dispatcher.Scenario": "Scenarios",
 
 	"evaluation.StartedOn": "Started on",
 	"evaluation.FinishedOn": "Finished on",

@@ -1,6 +1,9 @@
 {
 	"main.Cancel": "Отмена",
 	"main.This is a required field": "Обязательное поле",
+	"main.CreatedOn": "Создан",
+	"main.Name": "Название",
+	"main.Description": "Описание",
 
 	"ai.Experiments": "Эксперименты",
 	"ai.Results": "Результаты",
@@ -23,7 +26,6 @@
 	"batch-status.Status of execution of batch _batchId_": "Статус выполнения пакета #{{batchId}}",
 	"batch.Batch": "Пакеты",
 	"batch.Discard": "Сбросить",
-	"batch.Created On": "Создан",
 	"batch.Download": "Скачать",
 	"batch.Download Result": "Скачать результат",
 	"batch.Exec State": "Статус выполнения",
@@ -60,6 +62,8 @@
 
 	"api.name": "API name",
 	"api.code": "API code",
+
+	"dispatcher.Scenario": "Scenarios",
 
 	"evaluation.StartedOn": "Started on",
 	"evaluation.FinishedOn": "Finished on",

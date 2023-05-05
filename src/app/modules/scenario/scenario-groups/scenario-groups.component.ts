@@ -14,7 +14,7 @@ import {ScenarioService} from "@services/scenario/scenario.service";
   styleUrls: ['./scenario-groups.component.sass']
 })
 export class ScenarioGroupsComponent extends UIStateComponent implements OnInit {
-  columnsToDisplay: string[] = ['scenarioGroupId', 'createdOn', 'name', 'description', 'bts'];
+  columnsToDisplay: string[] = ['scenarioGroupId', 'createdOn', 'name', 'bts'];
   simpleScenarioGroupsResult: SimpleScenarioGroupsResult;
   dataSource = new MatTableDataSource<SimpleScenarioGroup>([]);
 
