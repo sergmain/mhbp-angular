@@ -7,7 +7,6 @@ import {ScenariosResult} from "@services/scenario/ScenariosResult";
 import {ScenarioService} from "@services/scenario/scenario.service";
 import {SimpleScenario} from "@services/scenario/SimpleScenario";
 import {ConfirmationDialogMethod} from "@app/components/app-dialog-confirmation/app-dialog-confirmation.component";
-import {SimpleKb} from "@services/kb/SimpleKb";
 
 @Component({
     selector: 'scenarios',

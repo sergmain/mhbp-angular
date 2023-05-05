@@ -15,24 +15,25 @@ import {ScenarioService} from "@services/scenario/scenario.service";
 import {ScenarioUidsForAccount} from "@services/scenario/ScenarioUidsForAccount";
 
 @Component({
-    selector: 'scenario-add',
-    templateUrl: './scenario-add.component.html',
-    styleUrls: ['./scenario-add.component.scss']
+    selector: 'scenario-step-add',
+    templateUrl: './scenario-step-add.component.html',
+    styleUrls: ['./scenario-step-add.component.scss']
 })
 
-export class ScenarioAddComponent extends UIStateComponent implements OnInit, OnDestroy {
+export class ScenarioStepAddComponent extends UIStateComponent implements OnInit, OnDestroy {
     readonly states = LoadStates;
 
     currentStates: Set<LoadStates> = new Set();
     response: ScenarioUidsForAccount;
     uploadResponse: OperationStatusRest;
     scenarioGroupId: string;
+    scenarioId: string;
 
     apiUid: ApiUid;
     listOfApis: ApiUid[] = [];
     form = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        description: new FormControl('', [Validators.required, Validators.minLength(5)]),
+        prompt: new FormControl('', [Validators.required, Validators.minLength(5)]),
     });
 
     constructor(
@@ -50,6 +51,7 @@ export class ScenarioAddComponent extends UIStateComponent implements OnInit, On
 
     ngOnInit(): void {
         this.scenarioGroupId = this.activatedRoute.snapshot.paramMap.get('scenarioGroupId');
+        this.scenarioId = this.activatedRoute.snapshot.paramMap.get('scenarioId');
         this.subscribeSubscription(this.settingsService.events.subscribe(event => {
             if (event instanceof SettingsServiceEventChange) {
                 this.translate.use(event.settings.language);
@@ -77,16 +79,17 @@ export class ScenarioAddComponent extends UIStateComponent implements OnInit, On
         this.button.disabled = true;
         this.currentStates.add(this.states.wait);
         const subscribe: Subscription = this.scenarioService
-            .addScenarioFormCommit(
+            .addScenarioStepFormCommit(
                 this.scenarioGroupId,
+                this.scenarioId,
                 this.form.value.name,
-                this.form.value.description,
+                this.form.value.prompt,
                 this.apiUid.id.toString()
             )
             .subscribe(
                 (response) => {
                     if (response.status === OperationStatus.OK) {
-                        this.router.navigate(['../scenarios'], { relativeTo: this.activatedRoute });
+                        this.router.navigate(['../steps'], { relativeTo: this.activatedRoute });
                     }
                 },
                 () => {},

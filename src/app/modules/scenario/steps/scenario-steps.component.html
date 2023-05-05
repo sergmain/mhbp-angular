@@ -3,13 +3,13 @@
         <app-ct-section-header-row>
             <app-ct-flex justify-content="space-between">
                 <app-ct-flex-item>
-                    <app-ct-heading>Scenarios</app-ct-heading>
+                    <app-ct-heading>Steps of Scenario</app-ct-heading>
                 </app-ct-flex-item>
             </app-ct-flex>
             <app-ct-flex justify-content="flex-end">
                 <app-ct-flex-item>
                     <button mat-flat-button="mat-flat-button" color="primary"
-                            [routerLink]="['../..', scenarioGroupId, 'scenario-add']">Add Scenario</button>
+                            [routerLink]="['../..', scenarioGroupId, 'scenario-step-add']">Add Scenario Step</button>
                 </app-ct-flex-item>
             </app-ct-flex>
         </app-ct-section-header-row>
@@ -58,61 +58,4 @@
         </app-ct-section-body-row>
     </app-ct-section-body>
 </app-ct-section>
-<app-ct-cols *ngIf="response">
-    <app-ct-col size="6">
-        <app-ct-section>
-            <app-ct-section-header>
-                <app-ct-section-header-row>
-                    <app-ct-heading>{{ 'evaluation-add.Create a new evaluation for specific API' | translate }}</app-ct-heading>
-                </app-ct-section-header-row>
-            </app-ct-section-header>
-            <app-ct-section-body>
-                <app-ct-section-body-row>
-                    <form [formGroup]="form" novalidate="novalidate">
-                        <mat-form-field appearance="outline" style="width: 100%;">
-                            <mat-label>{{ 'main.Name' | translate }}</mat-label>
-                            <input matInput="matInput" type="text" autocomplete="name" formControlName="name" />
-                            <mat-hint>{{ 'main.Name' | translate }}</mat-hint>
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field appearance="outline" style="width: 100%;">
-                            <mat-label>{{ 'main.Description' | translate }}</mat-label>
-                            <input matInput="matInput" type="text" autocomplete="description" formControlName="description" />
-                            <mat-hint>{{ 'main.Description' | translate }}</mat-hint>
-                        </mat-form-field>
-                    </form>
-                </app-ct-section-body-row>
-                <app-ct-section-body-row>
-                    <mat-form-field appearance="outline">
-                        <mat-label> {{ 'evaluation-add.List of APIs' | translate }}</mat-label>
-                        <mat-select [(ngModel)]="apiUid">
-                            <div *ngFor="let api of listOfApis">
-                                <mat-option [value]="api">{{api.uid}}</mat-option>
-                            </div>
-                        </mat-select>
-                        <mat-hint>{{ 'main.This is a required field.' | translate }}</mat-hint>
-                    </mat-form-field>
-                </app-ct-section-body-row>
-            </app-ct-section-body>
 
-            <app-ct-section-footer>
-                <app-ct-section-footer-row>
-                    <app-ct-flex justify-content="flex-end" gap="8px">
-                        <app-ct-flex-item>
-                            <button mat-stroked-button="mat-stroked-button"
-                                    [routerLink]="['../..', scenarioGroupId, 'scenarios']">
-                                {{ 'main.Cancel' | translate }}</button>
-                        </app-ct-flex-item>
-                        <app-ct-flex-item>
-                            <button mat-flat-button="mat-flat-button" color="primary" [disabled]="notToCreate()"
-                                    (click)="create()"> {{ 'evaluation-add.Create' | translate }}</button>
-                        </app-ct-flex-item>
-                    </app-ct-flex>
-                </app-ct-section-footer-row>
-            </app-ct-section-footer>
-        </app-ct-section>
-    </app-ct-col>
-    <app-ct-col size="6">
-        <app-ct-rest-status [content]="uploadResponse"></app-ct-rest-status>
-    </app-ct-col>
-</app-ct-cols>

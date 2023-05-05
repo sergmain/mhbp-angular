@@ -41,7 +41,7 @@
                             <app-ct-flex justify-content="flex-end" gap="8px">
                                 <app-ct-flex-item>
                                     <button mat-flat-button color="primary" size="forTableRow"
-                                            [routerLink]="['../session',el.id,'errors']">Steps</button>
+                                            [routerLink]="['../..', scenarioGroupId, 'scenario', el.scenarioId, 'steps']">Steps</button>
                                 </app-ct-flex-item>
                                 <app-ct-flex-item>
                                     <button mat-flat-button color="warn" size="forTableRow" (click)="delete(el)">

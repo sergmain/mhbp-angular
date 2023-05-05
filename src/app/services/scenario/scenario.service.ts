@@ -29,7 +29,7 @@ export class ScenarioService {
     scenarioSteps(scenarioGroupId: string, scenarioId: string): Observable<SimpleScenarioSteps> {
         let newUrl = url('scenario-steps')
         console.log('ScenarioService.scenarioSteps.newUrl: ' + newUrl);
-        return this.http.get<SimpleScenarioSteps>(url(`scenarios/${scenarioGroupId}/scenario/${scenarioId}/step`));
+        return this.http.get<SimpleScenarioSteps>(url(`scenarios/${scenarioGroupId}/scenario/${scenarioId}/steps`));
     }
 
     scenarioGroupDeleteCommit(scenarioGroupId: string): Observable<OperationStatusRest> {
