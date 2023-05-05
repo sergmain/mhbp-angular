@@ -37,7 +37,7 @@ export class SessionsComponent extends UIStateComponent implements OnInit {
   getEvaluations(pageNumber: number): void {
     this.setIsLoadingStart();
     this.sessionService
-        .getEvaluations(pageNumber.toString())
+        .getSessions(pageNumber.toString())
         .subscribe({
           next: simpleSessionsResult => {
             this.simpleSessionsResult = simpleSessionsResult;

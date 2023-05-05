@@ -16,7 +16,7 @@ export class SessionService {
         private http: HttpClient
     ) { }
 
-    getEvaluations(page: string): Observable<SimpleSessionsResult> {
+    getSessions(page: string): Observable<SimpleSessionsResult> {
         let newUrl = url('sessions')
         console.log('SessionService.newUrl: ' + newUrl);
         return this.http.get<SimpleSessionsResult>(newUrl, {params: {page}});

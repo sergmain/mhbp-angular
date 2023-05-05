@@ -9,6 +9,7 @@ import { CtModule } from '../ct/ct.module';
 import { CopyRightModule } from '../copy-right/copy-right.module';
 import { Role } from '@src/app/services/authentication';
 import { RoleRouteGuard } from '@src/app/guards/role-route.guard';
+import {ScenarioModule} from "@app/modules/scenario/scenario.module";
 
 
 const commonRequiredRoles: Role[] = [
@@ -35,6 +36,16 @@ export const DispatcherRoutes: Routes = [
                 path: '',
                 component: DispatcherIndexComponent
             }]
+    },
+    {
+        path: 'scenario',
+        canActivate: [RoleRouteGuard],
+        component: DispatcherRootComponent,
+        loadChildren: () => import('@app/modules/scenario/scenario.module').then(m => m.ScenarioModule),
+        data: {
+            requiredRoles: [Role.MainAdmin, Role.MainOperator, Role.MainSupport, Role.Manager],
+            section: 'scenario-groups'
+        }
     },
     {
         path: 'session',
