@@ -91,7 +91,7 @@ export class ScenarioAddComponent extends UIStateComponent implements OnInit, On
             .subscribe(
                 (response) => {
                     if (response.status === OperationStatus.OK) {
-                        this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+                        this.router.navigate(['../scenarios'], { relativeTo: this.activatedRoute });
                     }
                 },
                 () => {},

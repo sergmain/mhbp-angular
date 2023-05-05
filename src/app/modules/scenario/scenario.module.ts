@@ -28,7 +28,7 @@ export const ScenarioRoutes: Routes = [
         path: ':scenarioGroupId/scenario-add',
         component: ScenarioAddComponent,
         data: {
-            backConfig: ['../']
+            backConfig: ['../', 'scenarios']
         }
     },
     {

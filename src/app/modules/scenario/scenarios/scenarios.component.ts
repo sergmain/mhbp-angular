@@ -16,7 +16,7 @@ import {SimpleKb} from "@services/kb/SimpleKb";
 })
 export class ScenariosComponent extends UIStateComponent implements OnInit {
     dataSource: MatTableDataSource<SimpleScenario> = new MatTableDataSource<SimpleScenario>([]);
-    columnsToDisplay: string[] = ['id', 'createdOn', 'name', 'description'];
+    columnsToDisplay: string[] = ['id', 'createdOn', 'apiCode', 'name', 'bts'];
     scenariosResult: ScenariosResult;
     scenarioGroupId: string;
 

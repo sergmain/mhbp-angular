@@ -8,7 +8,8 @@
             </app-ct-flex>
             <app-ct-flex justify-content="flex-end">
                 <app-ct-flex-item>
-                    <button mat-flat-button="mat-flat-button" color="primary" routerLink="add">Add Scenario</button>
+                    <button mat-flat-button="mat-flat-button" color="primary"
+                            [routerLink]="['../..', scenarioGroupId, 'scenario-add']">Add Scenario</button>
                 </app-ct-flex-item>
             </app-ct-flex>
         </app-ct-section-header-row>
@@ -40,7 +41,7 @@
                             <app-ct-flex justify-content="flex-end" gap="8px">
                                 <app-ct-flex-item>
                                     <button mat-flat-button color="primary" size="forTableRow"
-                                            [routerLink]="['../session',el.sessionId,'errors']">Errors</button>
+                                            [routerLink]="['../session',el.id,'errors']">Steps</button>
                                 </app-ct-flex-item>
                                 <app-ct-flex-item>
                                     <button mat-flat-button color="warn" size="forTableRow" (click)="delete(el)">
