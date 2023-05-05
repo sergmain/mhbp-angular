@@ -49,8 +49,8 @@ export class ScenariosComponent extends UIStateComponent implements OnInit {
     }
 
     @ConfirmationDialogMethod({
-        question: (kb: SimpleKb): string =>
-            `Do you want to delete KB #${kb.id}`,
+        question: (ss: SimpleScenario): string =>
+            `Do you want to delete Scenario #${ss.scenarioId}`,
 
         resolveTitle: 'Delete',
         rejectTitle: 'Cancel'

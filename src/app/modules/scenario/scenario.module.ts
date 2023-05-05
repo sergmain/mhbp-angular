@@ -11,6 +11,7 @@ import {ScenarioGroupsComponent} from "./scenario-groups/scenario-groups.compone
 import {ScenariosComponent} from "./scenarios/scenarios.component";
 import {ScenarioGroupAddComponent} from "./scenario-group-add/scenario-group-add.component";
 import {ScenarioAddComponent} from "@app/modules/scenario/scenario-add/scenario-add.component";
+import {ScenarioStepsComponent} from "@app/modules/scenario/steps/scenario-steps.component";
 
 export const ScenarioRoutes: Routes = [
     {
@@ -39,6 +40,15 @@ export const ScenarioRoutes: Routes = [
             backConfig: ['../', '../', ''],
             requiredRoles: [Role.Admin]
         }
+    },
+    {
+        path: ':scenarioGroupId/scenario/:scenarioId/steps',
+        component: ScenariosComponent,
+        canActivate: [RoleRouteGuard],
+        data: {
+            backConfig: ['../', '../', '../', '../', ''],
+            requiredRoles: [Role.Admin]
+        }
     }
 ];
 
@@ -61,7 +71,9 @@ export class ScenarioGroupRoutingModule { }
         TranslateModule.forChild({})
     ],
     declarations: [
-        ScenarioGroupsComponent, ScenariosComponent, ScenarioGroupAddComponent, ScenarioAddComponent
+        ScenarioGroupsComponent, ScenariosComponent,
+        ScenarioGroupAddComponent, ScenarioAddComponent,
+        ScenarioStepsComponent
     ]
 })
 export class ScenarioModule { }

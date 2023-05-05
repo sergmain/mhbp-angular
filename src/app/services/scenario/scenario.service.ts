@@ -8,6 +8,8 @@ import {generateFormData} from "@app/helpers/generateFormData";
 import {ScenariosResult} from "@services/scenario/ScenariosResult";
 import {EvaluationUidsForCompany} from "@services/evaluation/EvaluationUidsForCompany";
 import {ScenarioUidsForAccount} from "@services/scenario/ScenarioUidsForAccount";
+import {SimpleScenarioStep} from "@services/scenario/SimpleScenarioStep";
+import {SimpleScenarioSteps} from "@services/scenario/SimpleScenarioSteps";
 
 
 const url = (s: string): string => `${environment.baseUrl}dispatcher/scenario/${s}`;
@@ -22,6 +24,12 @@ export class ScenarioService {
         let newUrl = url('scenario-groups')
         console.log('ScenarioService.newUrl: ' + newUrl);
         return this.http.get<SimpleScenarioGroupsResult>(newUrl, {params: {page}});
+    }
+
+    scenarioSteps(scenarioGroupId: string, scenarioId: string): Observable<SimpleScenarioSteps> {
+        let newUrl = url('scenario-steps')
+        console.log('ScenarioService.scenarioSteps.newUrl: ' + newUrl);
+        return this.http.get<SimpleScenarioSteps>(url(`scenarios/${scenarioGroupId}/scenario/${scenarioId}/step`));
     }
 
     scenarioGroupDeleteCommit(scenarioGroupId: string): Observable<OperationStatusRest> {
