@@ -1,5 +1,5 @@
 export interface SimpleScenario {
-    id: number;
+    scenarioId: number;
     scenarioGroupId: number;
     apiId: number;
     apiCode: string;

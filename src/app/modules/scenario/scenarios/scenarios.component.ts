@@ -57,7 +57,7 @@ export class ScenariosComponent extends UIStateComponent implements OnInit {
     })
     delete(scenario: SimpleScenario): void {
         this.scenarioService
-            .scenarioDeleteCommit(scenario.id.toString())
+            .scenarioDeleteCommit(scenario.scenarioId.toString())
             .subscribe(v => this.updateTable(this.scenariosResult.scenarios.number));
     }
 
