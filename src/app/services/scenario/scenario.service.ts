@@ -6,6 +6,8 @@ import {SimpleScenarioGroupsResult} from './SimpleScenarioGroupsResult';
 import {OperationStatusRest} from "@app/models/OperationStatusRest";
 import {generateFormData} from "@app/helpers/generateFormData";
 import {ScenariosResult} from "@services/scenario/ScenariosResult";
+import {EvaluationUidsForCompany} from "@services/evaluation/EvaluationUidsForCompany";
+import {ScenarioUidsForAccount} from "@services/scenario/ScenarioUidsForAccount";
 
 
 const url = (s: string): string => `${environment.baseUrl}dispatcher/scenario/${s}`;
@@ -40,11 +42,11 @@ export class ScenarioService {
         );
     }
 
-    addScenarioFormCommit(scenarioGroupId: number, name: string, description: string): Observable<OperationStatusRest> {
+    addScenarioFormCommit(scenarioGroupId: string, name: string, description: string, apiId: string): Observable<OperationStatusRest> {
         return this.http.post<OperationStatusRest>(
             url(`scenario-add-commit`),
             generateFormData({
-                scenarioGroupId, name, description
+                scenarioGroupId, name, description, apiId
             })
         );
     }
@@ -52,6 +54,10 @@ export class ScenarioService {
     scenarioDeleteCommit(scenarioId: string): Observable<OperationStatusRest> {
         console.log("Delete Scenario #"+ scenarioId);
         return this.http.post<OperationStatusRest>(url(`scenario-delete-commit`), generateFormData({ scenarioId: scenarioId }));
+    }
+
+    scenarioAdd(): Observable<ScenarioUidsForAccount> {
+        return this.http.get<ScenarioUidsForAccount>(url(`scenario-add`));
     }
 
 }

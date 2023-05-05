@@ -10,6 +10,7 @@ import {Role} from "@services/authentication";
 import {ScenarioGroupsComponent} from "./scenario-groups/scenario-groups.component";
 import {ScenariosComponent} from "./scenarios/scenarios.component";
 import {ScenarioGroupAddComponent} from "./scenario-group-add/scenario-group-add.component";
+import {ScenarioAddComponent} from "@app/modules/scenario/scenario-add/scenario-add.component";
 
 export const ScenarioRoutes: Routes = [
     {
@@ -17,8 +18,15 @@ export const ScenarioRoutes: Routes = [
         component: ScenarioGroupsComponent
     },
     {
-        path: 'add',
+        path: 'scenario-group-add',
         component: ScenarioGroupAddComponent,
+        data: {
+            backConfig: ['../']
+        }
+    },
+    {
+        path: ':scenarioGroupId/scenario-add',
+        component: ScenarioAddComponent,
         data: {
             backConfig: ['../']
         }
@@ -53,7 +61,7 @@ export class ScenarioGroupRoutingModule { }
         TranslateModule.forChild({})
     ],
     declarations: [
-        ScenarioGroupsComponent, ScenariosComponent, ScenarioGroupAddComponent
+        ScenarioGroupsComponent, ScenariosComponent, ScenarioGroupAddComponent, ScenarioAddComponent
     ]
 })
 export class ScenarioModule { }
