@@ -3,7 +3,7 @@
         <app-ct-section>
             <app-ct-section-header>
                 <app-ct-section-header-row>
-                    <app-ct-heading>{{ 'evaluation-add.Create a new evaluation for specific API' | translate }}</app-ct-heading>
+                    <app-ct-heading>New Step</app-ct-heading>
                 </app-ct-section-header-row>
             </app-ct-section-header>
             <app-ct-section-body>
@@ -12,13 +12,14 @@
                         <mat-form-field appearance="outline" style="width: 100%;">
                             <mat-label>{{ 'main.Name' | translate }}</mat-label>
                             <input matInput="matInput" type="text" autocomplete="name" formControlName="name" />
-                            <mat-hint>{{ 'main.Name' | translate }}</mat-hint>
+                            <mat-hint>{{ 'main.This is a required field' | translate }}</mat-hint>
                         </mat-form-field>
                         <br>
+                        <br>
                         <mat-form-field appearance="outline" style="width: 100%;">
-                            <mat-label>{{ 'main.Description' | translate }}</mat-label>
-                            <input matInput="matInput" type="text" autocomplete="description" formControlName="description" />
-                            <mat-hint>{{ 'main.Description' | translate }}</mat-hint>
+                            <mat-label>{{ 'step.Prompt' | translate }}</mat-label>
+                            <input matInput="matInput" type="text" autocomplete="prompt" formControlName="prompt" />
+                            <mat-hint>{{ 'main.This is a required field' | translate }}</mat-hint>
                         </mat-form-field>
                     </form>
                 </app-ct-section-body-row>
@@ -30,7 +31,7 @@
                                 <mat-option [value]="api">{{api.uid}}</mat-option>
                             </div>
                         </mat-select>
-                        <mat-hint>{{ 'main.This is a required field.' | translate }}</mat-hint>
+                        <mat-hint>{{ 'main.This is a required field' | translate }}</mat-hint>
                     </mat-form-field>
                 </app-ct-section-body-row>
             </app-ct-section-body>
@@ -40,19 +41,16 @@
                     <app-ct-flex justify-content="flex-end" gap="8px">
                         <app-ct-flex-item>
                             <button mat-stroked-button="mat-stroked-button"
-                                    [routerLink]="['../..', scenarioGroupId, 'scenarios']">
+                                    [routerLink]="['../steps']">
                                 {{ 'main.Cancel' | translate }}</button>
                         </app-ct-flex-item>
                         <app-ct-flex-item>
                             <button mat-flat-button="mat-flat-button" color="primary" [disabled]="notToCreate()"
-                                (click)="create()"> {{ 'evaluation-add.Create' | translate }}</button>
+                                (click)="create()"> {{ 'main.Create' | translate }}</button>
                         </app-ct-flex-item>
                     </app-ct-flex>
                 </app-ct-section-footer-row>
             </app-ct-section-footer>
         </app-ct-section>
-    </app-ct-col>
-    <app-ct-col size="6">
-        <app-ct-rest-status [content]="uploadResponse"></app-ct-rest-status>
     </app-ct-col>
 </app-ct-cols>

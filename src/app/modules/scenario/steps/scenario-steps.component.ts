@@ -76,31 +76,6 @@ export class ScenarioStepsComponent extends UIStateComponent implements OnInit {
             });
     }
 
-    create(): void {
-        this.cancelCreationButton.disabled = true;
-        this.currentStates.add(this.states.wait);
-        const subscribe: Subscription = this.scenarioService
-            .addScenarioStepFormCommit(
-                this.scenarioGroupId,
-                this.scenarioId,
-                this.form.value.name,
-                this.form.value.prompt,
-                this.apiUid.id.toString()
-            )
-            .subscribe(
-                (response) => {
-                    if (response.status === OperationStatus.OK) {
-                        this.router.navigate(['../scenarios'], { relativeTo: this.activatedRoute });
-                    }
-                },
-                () => {},
-                () => {
-                    this.currentStates.delete(this.states.wait);
-                    subscribe.unsubscribe();
-                }
-            );
-    }
-
     @ConfirmationDialogMethod({
         question: (scenarioStep: SimpleScenarioStep): string =>
             `Do you want to delete Scenario Step #${scenarioStep.scenarioStepId}`,

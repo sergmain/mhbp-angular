@@ -1,6 +1,7 @@
 {
 	"main.Cancel": "Cancel",
 	"main.This is a required field": "This is a required field",
+	"main.Create": "Create",
 	"main.CreatedOn": "Created On",
 	"main.Name": "Name",
 	"main.Description": "Description",
@@ -64,6 +65,8 @@
 	"api.code": "API code",
 
 	"dispatcher.Scenario": "Scenarios",
+
+	"step.Prompt": "Prompt",
 
 	"evaluation.StartedOn": "Started on",
 	"evaluation.FinishedOn": "Finished on",

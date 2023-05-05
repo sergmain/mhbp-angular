@@ -52,11 +52,11 @@ export const ScenarioRoutes: Routes = [
         }
     },
     {
-        path: ':scenarioGroupId/scenario/:scenarioId/step-add',
-        component: ScenarioStepsComponent,
+        path: ':scenarioGroupId/scenario/:scenarioId/scenario-step-add',
+        component: ScenarioStepAddComponent,
         canActivate: [RoleRouteGuard],
         data: {
-            backConfig: ['../', '../', '../', 'scenarios'],
+            backConfig: ['../', 'steps'],
             requiredRoles: [Role.Admin]
         }
     }

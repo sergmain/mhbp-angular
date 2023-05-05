@@ -1,5 +1,6 @@
 {
 	"main.Cancel": "Отмена",
+	"main.Create": "Создать",
 	"main.This is a required field": "Обязательное поле",
 	"main.CreatedOn": "Создан",
 	"main.Name": "Название",
@@ -64,6 +65,9 @@
 	"api.code": "API code",
 
 	"dispatcher.Scenario": "Scenarios",
+
+	"step.Prompt": "Prompt",
+	"step.Create": "Create",
 
 	"evaluation.StartedOn": "Started on",
 	"evaluation.FinishedOn": "Finished on",

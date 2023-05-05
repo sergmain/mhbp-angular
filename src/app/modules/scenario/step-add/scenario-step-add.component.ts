@@ -25,7 +25,6 @@ export class ScenarioStepAddComponent extends UIStateComponent implements OnInit
 
     currentStates: Set<LoadStates> = new Set();
     response: ScenarioUidsForAccount;
-    uploadResponse: OperationStatusRest;
     scenarioGroupId: string;
     scenarioId: string;
 
@@ -67,7 +66,7 @@ export class ScenarioStepAddComponent extends UIStateComponent implements OnInit
 
     updateResponse(): void {
         this.scenarioService
-            .scenarioAdd()
+            .scenarioStepAdd()
             .subscribe((response) => {
                 this.response = response;
                 this.listOfApis = this.response.apis;
@@ -101,7 +100,7 @@ export class ScenarioStepAddComponent extends UIStateComponent implements OnInit
     }
 
     back(): void {
-        this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+        this.router.navigate(['../steps'], { relativeTo: this.activatedRoute });
     }
 
     notToCreate() {
