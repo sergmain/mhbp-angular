@@ -7,6 +7,7 @@ import {ScenariosResult} from "@services/scenario/ScenariosResult";
 import {ScenarioService} from "@services/scenario/scenario.service";
 import {SimpleScenario} from "@services/scenario/SimpleScenario";
 import {ConfirmationDialogMethod} from "@app/components/app-dialog-confirmation/app-dialog-confirmation.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'scenarios',
@@ -20,6 +21,7 @@ export class ScenariosComponent extends UIStateComponent implements OnInit {
     scenarioGroupId: string;
 
     constructor(
+        readonly dialog: MatDialog,
         private scenarioService: ScenarioService,
         private activatedRoute: ActivatedRoute,
         readonly authenticationService: AuthenticationService

@@ -6,15 +6,11 @@ import {ScenarioService} from "@services/scenario/scenario.service";
 import {ConfirmationDialogMethod} from "@app/components/app-dialog-confirmation/app-dialog-confirmation.component";
 import {LoadStates} from "@app/enums/LoadStates";
 import {ScenarioUidsForAccount} from "@services/scenario/ScenarioUidsForAccount";
-import {OperationStatusRest} from "@app/models/OperationStatusRest";
-import {ApiUid} from "@services/evaluation/ApiUid";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SimpleScenarioSteps} from "@services/scenario/SimpleScenarioSteps";
 import {SimpleScenarioStep} from "@services/scenario/SimpleScenarioStep";
-import {Subscription} from "rxjs";
-import {OperationStatus} from "@app/enums/OperationStatus";
 import {MatButton} from "@angular/material/button";
 import {MatTableDataSource} from "@angular/material/table";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'scenario-steps',
@@ -39,6 +35,7 @@ export class ScenarioStepsComponent extends UIStateComponent implements OnInit {
     @ViewChild(MatButton) cancelCreationButton: MatButton;
 
     constructor(
+        readonly dialog: MatDialog,
         private scenarioService: ScenarioService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
