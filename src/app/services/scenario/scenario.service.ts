@@ -6,9 +6,7 @@ import {SimpleScenarioGroupsResult} from './SimpleScenarioGroupsResult';
 import {OperationStatusRest} from "@app/models/OperationStatusRest";
 import {generateFormData} from "@app/helpers/generateFormData";
 import {ScenariosResult} from "@services/scenario/ScenariosResult";
-import {EvaluationUidsForCompany} from "@services/evaluation/EvaluationUidsForCompany";
 import {ScenarioUidsForAccount} from "@services/scenario/ScenarioUidsForAccount";
-import {SimpleScenarioStep} from "@services/scenario/SimpleScenarioStep";
 import {SimpleScenarioSteps} from "@services/scenario/SimpleScenarioSteps";
 
 
@@ -86,4 +84,8 @@ export class ScenarioService {
         return this.http.post<OperationStatusRest>(url(`scenario-step-delete-commit`), generateFormData({ scenarioId: scenarioId, uuid: uuid }));
     }
 
+    scenarioStepRearrangeTable(scenarioId: string, previousIndex: number, currentIndex: number): Observable<OperationStatusRest> {
+        console.log("scenarioStepRearrangeTable #"+ scenarioId+", prev: " + previousIndex+", curr: " + currentIndex);
+        return this.http.post<OperationStatusRest>(url(`scenario-step-rearrange`), generateFormData({ scenarioId: scenarioId, prev: previousIndex, curr: currentIndex }));
+    }
 }

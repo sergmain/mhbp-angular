@@ -11,6 +11,8 @@ import {SimpleScenarioStep} from "@services/scenario/SimpleScenarioStep";
 import {MatButton} from "@angular/material/button";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
+import {CdkDragDrop} from "@angular/cdk/drag-drop";
+
 
 @Component({
     selector: 'scenario-steps',
@@ -77,6 +79,16 @@ export class ScenarioStepsComponent extends UIStateComponent implements OnInit {
     delete(scenarioStep: SimpleScenarioStep): void {
         this.scenarioService
             .scenarioStepDeleteCommit(scenarioStep.scenarioId.toString(), scenarioStep.uuid)
+            .subscribe(v => this.updateTable());
+    }
+
+    rearrangeTable(event: CdkDragDrop<SimpleScenarioStep[]>): void {
+        // console.log("ScenarioStepsComponent.rearrangeTable, prev: "+ event.previousIndex+", curr: " + event.currentIndex);
+        if (event.previousIndex===event.currentIndex) {
+            return;
+        }
+        this.scenarioService
+            .scenarioStepRearrangeTable(this.scenarioId.toString(), event.previousIndex, event.currentIndex)
             .subscribe(v => this.updateTable());
     }
 }
