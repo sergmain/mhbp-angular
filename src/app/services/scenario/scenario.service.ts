@@ -81,9 +81,9 @@ export class ScenarioService {
         return this.http.get<ScenarioUidsForAccount>(url(`scenario-step-add`));
     }
 
-    scenarioStepDeleteCommit(scenarioStepId: string): Observable<OperationStatusRest> {
-        console.log("Delete ScenarioStep #"+ scenarioStepId);
-        return this.http.post<OperationStatusRest>(url(`scenario-step-delete-commit`), generateFormData({ scenarioStepId: scenarioStepId }));
+    scenarioStepDeleteCommit(scenarioId: string, uuid: string): Observable<OperationStatusRest> {
+        console.log("Delete ScenarioStep #"+ scenarioId);
+        return this.http.post<OperationStatusRest>(url(`scenario-step-delete-commit`), generateFormData({ scenarioId: scenarioId, uuid: uuid }));
     }
 
 }

@@ -26,7 +26,7 @@ export class ScenarioStepsComponent extends UIStateComponent implements OnInit {
 
     currentStates: Set<LoadStates> = new Set();
 
-    columnsToDisplay: string[] = ['id', 'prompt', 'api', 'prompt', 'bts'];
+    columnsToDisplay: string[] = ['api', 'name', 'prompt', 'answer', 'bts'];
 
     simpleScenarioSteps: SimpleScenarioSteps;
     scenarioGroupId: string;
@@ -35,16 +35,8 @@ export class ScenarioStepsComponent extends UIStateComponent implements OnInit {
     dataSource = new MatTableDataSource<SimpleScenarioStep>([]);
 
     response: ScenarioUidsForAccount;
-    uploadResponse: OperationStatusRest;
 
     @ViewChild(MatButton) cancelCreationButton: MatButton;
-
-    apiUid: ApiUid;
-    listOfApis: ApiUid[] = [];
-    form = new FormGroup({
-        name: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        prompt: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    });
 
     constructor(
         private scenarioService: ScenarioService,
@@ -68,7 +60,9 @@ export class ScenarioStepsComponent extends UIStateComponent implements OnInit {
             .subscribe({
                 next: simpleScenarioSteps => {
                     this.simpleScenarioSteps = simpleScenarioSteps;
+                    // console.log('ScenarioStepsComponent.simpleScenarioSteps: ' + JSON.stringify(this.simpleScenarioSteps));
                     this.dataSource = new MatTableDataSource(this.simpleScenarioSteps.steps || []);
+                    // console.log('ScenarioStepsComponent.simpleScenarioSteps: #3');
                 },
                 complete: () => {
                     this.setIsLoadingEnd();
@@ -78,19 +72,14 @@ export class ScenarioStepsComponent extends UIStateComponent implements OnInit {
 
     @ConfirmationDialogMethod({
         question: (scenarioStep: SimpleScenarioStep): string =>
-            `Do you want to delete Scenario Step #${scenarioStep.scenarioStepId}`,
+            `Do you want to delete Scenario Step #${scenarioStep.uuid}`,
 
         resolveTitle: 'Delete',
         rejectTitle: 'Cancel'
     })
     delete(scenarioStep: SimpleScenarioStep): void {
         this.scenarioService
-            .scenarioStepDeleteCommit(scenarioStep.scenarioStepId.toString())
+            .scenarioStepDeleteCommit(scenarioStep.scenarioId.toString(), scenarioStep.uuid)
             .subscribe(v => this.updateTable());
     }
-
-    notToCreate() {
-        return this.apiUid==null || this.form.invalid;
-    }
-
 }

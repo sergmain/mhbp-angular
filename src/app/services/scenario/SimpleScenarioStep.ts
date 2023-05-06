@@ -1,5 +1,5 @@
 export interface SimpleScenarioStep {
-    scenarioStepId: number;
+    scenarioId: number;
     uuid: string;
     apiId: number;
     apiCode: string;

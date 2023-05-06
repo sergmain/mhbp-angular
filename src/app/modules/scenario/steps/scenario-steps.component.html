@@ -18,22 +18,21 @@
         <app-ct-section-body-row>
             <ct-table [isWaiting]="isLoading">
                 <table mat-table [dataSource]="dataSource">
-                    <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef>ID </th>
-                        <td mat-cell *matCellDef="let el">{{el.scenarioId}} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="createdOn">
-                        <th mat-header-cell *matHeaderCellDef>Created On </th>
-                        <td mat-cell *matCellDef="let el">
-                            {{el.createdOn | date:'HH:mm, MMM&nbsp;d,&nbsp;yyyy'}} </td>
+                    <ng-container matColumnDef="api">
+                        <th mat-header-cell *matHeaderCellDef>apiCode </th>
+                        <td mat-cell *matCellDef="let el">{{el.apiCode}} </td>
                     </ng-container>
                     <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef>Name<br/>Description</th>
-                        <td mat-cell *matCellDef="let el">{{el.name}}<br/>{{el.description}} </td>
+                        <th mat-header-cell *matHeaderCellDef>Name</th>
+                        <td mat-cell *matCellDef="let el">{{el.name}}</td>
                     </ng-container>
-                    <ng-container matColumnDef="apiCode">
-                        <th mat-header-cell *matHeaderCellDef>API code</th>
-                        <td mat-cell *matCellDef="let el">{{el.apiCode}} </td>
+                    <ng-container matColumnDef="prompt">
+                        <th mat-header-cell *matHeaderCellDef>Prompt</th>
+                        <td mat-cell *matCellDef="let el">{{el.prompt}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="answer">
+                        <th mat-header-cell *matHeaderCellDef>Answer</th>
+                        <td mat-cell *matCellDef="let el">{{el.answer}} </td>
                     </ng-container>
                     <ng-container matColumnDef="bts">
                         <th mat-header-cell *matHeaderCellDef></th>
@@ -41,7 +40,7 @@
                             <app-ct-flex justify-content="flex-end" gap="8px">
                                 <app-ct-flex-item>
                                     <button mat-flat-button color="primary" size="forTableRow"
-                                            [routerLink]="['../session',el.id,'errors']">Steps</button>
+                                            [routerLink]="['../step', el.uuid, 'step-edit']">Edit</button>
                                 </app-ct-flex-item>
                                 <app-ct-flex-item>
                                     <button mat-flat-button color="warn" size="forTableRow" (click)="delete(el)">
