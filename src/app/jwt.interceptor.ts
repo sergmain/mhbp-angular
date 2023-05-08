@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { AuthenticationService } from '@app/services/authentication';
 
 @Injectable()
-
 export class JwtInterceptor implements HttpInterceptor {
 
     constructor(

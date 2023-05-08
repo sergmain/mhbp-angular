@@ -7,7 +7,6 @@ import { OperationStatus } from './enums/OperationStatus';
 import { NotificationsService } from './modules/angular2-notifications/services/notifications.service';
 
 @Injectable()
-
 export class NotificationsInterceptor implements HttpInterceptor {
 
     options: { showProgressBar: boolean; pauseOnHover: boolean; timeOut: number; clickToClose: boolean } = {
